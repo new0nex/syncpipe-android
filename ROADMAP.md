@@ -64,10 +64,6 @@ Verified behavior:
 
 Known polish before calling it public-release complete:
 
-- add clearer final wording for repeated watches versus unique videos
-- improve warning text for skipped/unparseable Takeout rows
-- document exactly which Takeout files are supported
-- add failure messages for wrong ZIPs or missing YouTube data
 - test more Takeout language/date formats
 - test public/unlisted online playlist bookmarks with more examples
 - consider metadata refresh for playlist-only videos that have placeholder titles

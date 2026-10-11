@@ -66,7 +66,9 @@ public final class YoutubePlaylistImporter {
         }
 
         if (parsedTakeout.playlists.isEmpty()) {
-            throw new IOException("No YouTube playlists found");
+            throw new IOException("No supported YouTube playlists were found. "
+                    + "Select a Google Takeout ZIP containing "
+                    + "\"YouTube and YouTube Music/playlists/playlists.csv\".");
         }
 
         return database.runInTransaction(() -> importPlaylists(parsedTakeout));
@@ -165,7 +167,8 @@ public final class YoutubePlaylistImporter {
         bufferedInputStream.reset();
 
         if (signature != ZIP_LOCAL_FILE_HEADER) {
-            throw new IOException("Please select a Google Takeout zip containing playlists.csv");
+            throw new IOException("Please select a Google Takeout ZIP containing YouTube "
+                    + "playlists.csv, not an extracted CSV file.");
         }
 
         return parseZip(bufferedInputStream);

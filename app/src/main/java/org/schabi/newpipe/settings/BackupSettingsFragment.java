@@ -204,6 +204,7 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
             final boolean[] selected = new boolean[] {true, true, true};
             new AlertDialog.Builder(requireActivity())
                     .setTitle(R.string.import_youtube_takeout_title)
+                    .setMessage(R.string.import_youtube_takeout_selection_message)
                     .setMultiChoiceItems(new String[] {
                                     getString(R.string.import_youtube_takeout_option_history),
                                     getString(R.string.import_youtube_takeout_option_playlists),
@@ -316,6 +317,7 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
                                 R.string.import_youtube_watch_history_complete,
                                 result.getImportedVideos(),
                                 result.getHistoryEntries(),
+                                result.getMergedRepeatEvents(),
                                 result.getSkippedVideos()))
                         .setPositiveButton(R.string.ok, null)
                         .show();
@@ -416,7 +418,19 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
         final YoutubeWatchHistoryImporter.ImportResult historyResult = result.getHistoryResult();
         if (historyResult != null) {
             message.append(getString(R.string.import_youtube_takeout_history_result,
-                    historyResult.getImportedVideos(), historyResult.getHistoryEntries()));
+                    historyResult.getImportedVideos(),
+                    historyResult.getHistoryEntries(),
+                    historyResult.getMergedRepeatEvents()));
+            if (historyResult.getSkippedVideos() > 0) {
+                appendResultLine(message);
+                message.append(getString(R.string.import_youtube_takeout_history_skipped,
+                        historyResult.getSkippedVideos()));
+            }
+        } else if (result.getHistoryError() != null) {
+            appendResultLine(message);
+            message.append(getString(R.string.import_youtube_takeout_section_failed,
+                    getString(R.string.import_youtube_takeout_option_history),
+                    result.getHistoryError()));
         }
 
         final YoutubePlaylistImporter.ImportResult playlistResult = result.getPlaylistResult();
@@ -426,12 +440,27 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
                     playlistResult.getLocalPlaylists(),
                     playlistResult.getLocalVideos(),
                     playlistResult.getRemotePlaylists()));
+            if (playlistResult.getSkippedPlaylists() > 0) {
+                appendResultLine(message);
+                message.append(getString(R.string.import_youtube_takeout_playlists_skipped,
+                        playlistResult.getSkippedPlaylists()));
+            }
+        } else if (result.getPlaylistError() != null) {
+            appendResultLine(message);
+            message.append(getString(R.string.import_youtube_takeout_section_failed,
+                    getString(R.string.import_youtube_takeout_option_playlists),
+                    result.getPlaylistError()));
         }
 
         if (result.getInsertedSubscriptions() != null) {
             appendResultLine(message);
             message.append(getString(R.string.import_youtube_takeout_subscriptions_result,
                     result.getInsertedSubscriptions()));
+        } else if (result.getSubscriptionsError() != null) {
+            appendResultLine(message);
+            message.append(getString(R.string.import_youtube_takeout_section_failed,
+                    getString(R.string.import_youtube_takeout_option_subscriptions),
+                    result.getSubscriptionsError()));
         }
         return message.toString();
     }

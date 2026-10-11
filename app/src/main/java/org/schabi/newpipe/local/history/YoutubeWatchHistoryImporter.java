@@ -60,26 +60,28 @@ public final class YoutubeWatchHistoryImporter {
 
     @NonNull
     public ImportResult importFrom(@NonNull final StoredFileHelper file) throws IOException {
-        final Map<String, ImportedVideo> importedVideos;
+        final ParsedHistory parsedHistory;
         try (SharpStream sharpStream = file.getStream();
              InputStream inputStream = new BufferedInputStream(new SharpInputStream(sharpStream))) {
-            importedVideos = parseInput(inputStream);
+            parsedHistory = parseInput(inputStream);
         }
 
-        if (importedVideos.isEmpty()) {
-            throw new IOException("No YouTube watch history entries found");
+        if (parsedHistory.importedVideos.isEmpty()) {
+            throw new IOException("No supported YouTube watch history entries were found. "
+                    + "Select a Google Takeout ZIP containing "
+                    + "\"YouTube and YouTube Music/history/watch-history.html\".");
         }
 
-        return database.runInTransaction(() -> importVideos(importedVideos));
+        return database.runInTransaction(() -> importVideos(parsedHistory));
     }
 
     @NonNull
-    private ImportResult importVideos(@NonNull final Map<String, ImportedVideo> importedVideos) {
+    private ImportResult importVideos(@NonNull final ParsedHistory parsedHistory) {
         int imported = 0;
-        int skipped = 0;
+        int skipped = parsedHistory.skippedCards;
         int totalHistoryEntries = 0;
 
-        for (final ImportedVideo video : importedVideos.values()) {
+        for (final ImportedVideo video : parsedHistory.importedVideos.values()) {
             totalHistoryEntries += video.repeatCount;
 
             final StreamInfoItem item = new StreamInfoItem(ServiceList.YouTube.getServiceId(),
@@ -116,7 +118,7 @@ public final class YoutubeWatchHistoryImporter {
     }
 
     @NonNull
-    private Map<String, ImportedVideo> parseInput(@NonNull final InputStream inputStream)
+    private ParsedHistory parseInput(@NonNull final InputStream inputStream)
             throws IOException {
         final BufferedInputStream bufferedInputStream = inputStream instanceof BufferedInputStream
                 ? (BufferedInputStream) inputStream : new BufferedInputStream(inputStream);
@@ -132,7 +134,7 @@ public final class YoutubeWatchHistoryImporter {
     }
 
     @NonNull
-    private Map<String, ImportedVideo> parseZip(@NonNull final InputStream inputStream)
+    private ParsedHistory parseZip(@NonNull final InputStream inputStream)
             throws IOException {
         try (ZipInputStream zipInputStream = new ZipInputStream(inputStream)) {
             ZipEntry entry;
@@ -144,11 +146,12 @@ public final class YoutubeWatchHistoryImporter {
                 }
             }
         }
-        throw new IOException("Takeout zip does not contain watch-history.html");
+        throw new IOException("This ZIP does not contain YouTube watch history. "
+                + "In Google Takeout, include YouTube and YouTube Music > history.");
     }
 
     @NonNull
-    private Map<String, ImportedVideo> parseHtml(@NonNull final InputStream inputStream)
+    private ParsedHistory parseHtml(@NonNull final InputStream inputStream)
             throws IOException {
         final Document document = Jsoup.parse(inputStream, "UTF-8", "");
         final Map<String, ImportedVideo> videos = new LinkedHashMap<>();
@@ -171,7 +174,7 @@ public final class YoutubeWatchHistoryImporter {
 
         Log.i(TAG, "Parsed " + videos.size() + " unique videos from YouTube watch history; "
                 + "skipped " + skippedCards + " cards");
-        return videos;
+        return new ParsedHistory(videos, skippedCards);
     }
 
     @Nullable
@@ -309,6 +312,21 @@ public final class YoutubeWatchHistoryImporter {
 
         public int getSkippedVideos() {
             return skippedVideos;
+        }
+
+        public int getMergedRepeatEvents() {
+            return Math.max(0, historyEntries - importedVideos);
+        }
+    }
+
+    private static final class ParsedHistory {
+        private final Map<String, ImportedVideo> importedVideos;
+        private final int skippedCards;
+
+        private ParsedHistory(@NonNull final Map<String, ImportedVideo> importedVideos,
+                              final int skippedCards) {
+            this.importedVideos = importedVideos;
+            this.skippedCards = skippedCards;
         }
     }
 

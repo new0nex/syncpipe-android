@@ -19,6 +19,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.zip.ZipEntry;
@@ -39,20 +40,45 @@ public final class YoutubeTakeoutImporter {
         YoutubeWatchHistoryImporter.ImportResult historyResult = null;
         YoutubePlaylistImporter.ImportResult playlistResult = null;
         Integer insertedSubscriptions = null;
+        String historyError = null;
+        String playlistError = null;
+        String subscriptionsError = null;
+        final List<String> errors = new ArrayList<>();
 
         if (selection.importHistory) {
-            historyResult = new YoutubeWatchHistoryImporter(context).importFrom(file);
+            try {
+                historyResult = new YoutubeWatchHistoryImporter(context).importFrom(file);
+            } catch (final Exception e) {
+                historyError = friendlyMessage(e);
+                errors.add("history: " + historyError);
+            }
         }
 
         if (selection.importPlaylists) {
-            playlistResult = new YoutubePlaylistImporter(context).importFrom(file);
+            try {
+                playlistResult = new YoutubePlaylistImporter(context).importFrom(file);
+            } catch (final Exception e) {
+                playlistError = friendlyMessage(e);
+                errors.add("playlists: " + playlistError);
+            }
         }
 
         if (selection.importSubscriptions) {
-            insertedSubscriptions = importSubscriptions(file);
+            try {
+                insertedSubscriptions = importSubscriptions(file);
+            } catch (final Exception e) {
+                subscriptionsError = friendlyMessage(e);
+                errors.add("subscriptions: " + subscriptionsError);
+            }
         }
 
-        return new ImportResult(historyResult, playlistResult, insertedSubscriptions);
+        if (historyResult == null && playlistResult == null && insertedSubscriptions == null) {
+            throw new IOException("No selected YouTube Takeout data could be imported. "
+                    + String.join("; ", errors));
+        }
+
+        return new ImportResult(historyResult, playlistResult, insertedSubscriptions,
+                historyError, playlistError, subscriptionsError);
     }
 
     private int importSubscriptions(@NonNull final StoredFileHelper file) throws Exception {
@@ -79,7 +105,17 @@ public final class YoutubeTakeoutImporter {
                 }
             }
         }
-        throw new IOException("Takeout zip does not contain subscriptions.csv");
+        throw new IOException("This ZIP does not contain YouTube subscriptions. "
+                + "In Google Takeout, include YouTube and YouTube Music > subscriptions.");
+    }
+
+    @NonNull
+    private static String friendlyMessage(@NonNull final Exception exception) {
+        final String message = exception.getMessage();
+        if (message == null || message.trim().isEmpty()) {
+            return exception.getClass().getSimpleName();
+        }
+        return message.trim();
     }
 
     @NonNull
@@ -115,13 +151,22 @@ public final class YoutubeTakeoutImporter {
         private final YoutubeWatchHistoryImporter.ImportResult historyResult;
         private final YoutubePlaylistImporter.ImportResult playlistResult;
         private final Integer insertedSubscriptions;
+        private final String historyError;
+        private final String playlistError;
+        private final String subscriptionsError;
 
         private ImportResult(final YoutubeWatchHistoryImporter.ImportResult historyResult,
                              final YoutubePlaylistImporter.ImportResult playlistResult,
-                             final Integer insertedSubscriptions) {
+                             final Integer insertedSubscriptions,
+                             final String historyError,
+                             final String playlistError,
+                             final String subscriptionsError) {
             this.historyResult = historyResult;
             this.playlistResult = playlistResult;
             this.insertedSubscriptions = insertedSubscriptions;
+            this.historyError = historyError;
+            this.playlistError = playlistError;
+            this.subscriptionsError = subscriptionsError;
         }
 
         public YoutubeWatchHistoryImporter.ImportResult getHistoryResult() {
@@ -134,6 +179,18 @@ public final class YoutubeTakeoutImporter {
 
         public Integer getInsertedSubscriptions() {
             return insertedSubscriptions;
+        }
+
+        public String getHistoryError() {
+            return historyError;
+        }
+
+        public String getPlaylistError() {
+            return playlistError;
+        }
+
+        public String getSubscriptionsError() {
+            return subscriptionsError;
         }
     }
 }

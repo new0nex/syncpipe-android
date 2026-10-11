@@ -43,6 +43,40 @@ Playlist import keeps private/export-only playlists as local playlists. Public o
 
 Subscription import reads YouTube subscriptions from the same Takeout ZIP, so users can restore history, playlists, and subscriptions from one import flow.
 
+#### How To Export From Google Takeout
+
+1. Open [Google Takeout](https://takeout.google.com/).
+2. Click **Deselect all**.
+3. Select **YouTube and YouTube Music**.
+4. Click **All YouTube data included**.
+5. Select the data you want SyncPipe to import:
+   - **history** for watch history
+   - **playlists** for playlists
+   - **subscriptions** for subscribed channels
+6. Click **OK**, then **Next step**.
+7. Choose **Export once** and **.zip**.
+8. Create the export and download the ZIP when Google finishes it.
+
+#### How To Import In SyncPipe
+
+1. Open SyncPipe.
+2. Go to **Settings** > **Backup and restore** > **YouTube Takeout**.
+3. Tap **Import from YouTube Takeout**.
+4. Select the Google Takeout ZIP directly. Do not extract it first.
+5. Choose which parts to import: watch history, playlists, subscriptions, or any combination.
+6. Wait for the final result dialog.
+
+The result dialog separates watch events from unique videos. For example, if the dialog says `12,464 unique videos from 14,294 watch events`, the difference is repeated watches that were merged into the same video history item.
+
+Supported Takeout files:
+
+- `YouTube and YouTube Music/history/watch-history.html`
+- `YouTube and YouTube Music/playlists/playlists.csv`
+- `YouTube and YouTube Music/playlists/*-videos.csv`
+- `YouTube and YouTube Music/subscriptions/subscriptions.csv`
+
+If one selected section is missing from the ZIP, SyncPipe imports the other selected sections it can read and reports the missing section in the final dialog.
+
 ## Releases And Updates
 
 SyncPipe update checks use this repository's GitHub Releases.
