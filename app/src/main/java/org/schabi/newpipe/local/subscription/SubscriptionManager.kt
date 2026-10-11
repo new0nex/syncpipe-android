@@ -71,6 +71,14 @@ class SubscriptionManager(context: Context) {
             subscriptionItems.map { SubscriptionEntity.from(it) }
         )
 
+    fun getIdsWithoutAvatar(subscriptionItems: List<SubscriptionItem>): LongArray =
+        subscriptionItems
+            .groupBy { it.serviceId }
+            .flatMap { (serviceId, items) ->
+                subscriptionTable.getIdsWithoutAvatar(serviceId, items.map { it.url })
+            }
+            .toLongArray()
+
     fun updateChannelInfo(subscriptionId: Long, info: ChannelInfo) {
         val subscriptionEntity = subscriptionTable.getSubscription(subscriptionId)
         if (info.name == null) return

@@ -25,6 +25,7 @@ import org.schabi.newpipe.extractor.localization.ContentCountry;
 import org.schabi.newpipe.extractor.localization.Localization;
 import org.schabi.newpipe.local.history.YoutubeWatchHistoryImporter;
 import org.schabi.newpipe.local.playlist.YoutubePlaylistImporter;
+import org.schabi.newpipe.local.subscription.SubscriptionDetailsConfirmationDialog;
 import org.schabi.newpipe.local.subscription.SubscriptionManager;
 import org.schabi.newpipe.local.subscription.SubscriptionsImportExportHelper;
 import org.schabi.newpipe.local.youtube.YoutubeTakeoutImporter;
@@ -204,7 +205,6 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
             final boolean[] selected = new boolean[] {true, true, true};
             new AlertDialog.Builder(requireActivity())
                     .setTitle(R.string.import_youtube_takeout_title)
-                    .setMessage(R.string.import_youtube_takeout_selection_message)
                     .setMultiChoiceItems(new String[] {
                                     getString(R.string.import_youtube_takeout_option_history),
                                     getString(R.string.import_youtube_takeout_option_playlists),
@@ -404,7 +404,8 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
                     new AlertDialog.Builder(requireActivity())
                             .setTitle(R.string.import_youtube_takeout_title)
                             .setMessage(formatYouTubeTakeoutImportResult(result))
-                            .setPositiveButton(R.string.ok, null)
+                            .setPositiveButton(R.string.ok, (dialog, which) ->
+                                    showSubscriptionDetailsPromptIfNeeded(result))
                             .show();
                 }, e -> {
                     dismissYouTubeTakeoutImportDialog();
@@ -463,6 +464,14 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
                     result.getSubscriptionsError()));
         }
         return message.toString();
+    }
+
+    private void showSubscriptionDetailsPromptIfNeeded(
+            final YoutubeTakeoutImporter.ImportResult result) {
+        final long[] insertedSubscriptionIds = result.getInsertedSubscriptionIds();
+        if (insertedSubscriptionIds.length > 0) {
+            SubscriptionDetailsConfirmationDialog.Companion.show(this, insertedSubscriptionIds);
+        }
     }
 
     private static void appendResultLine(final StringBuilder message) {

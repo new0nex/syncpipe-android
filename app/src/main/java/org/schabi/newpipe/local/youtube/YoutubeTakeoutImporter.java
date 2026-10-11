@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import org.schabi.newpipe.extractor.NewPipe;
 import org.schabi.newpipe.extractor.ServiceList;
 import org.schabi.newpipe.extractor.subscription.SubscriptionItem;
+import org.schabi.newpipe.database.subscription.SubscriptionEntity;
 import org.schabi.newpipe.local.history.YoutubeWatchHistoryImporter;
 import org.schabi.newpipe.local.playlist.YoutubePlaylistImporter;
 import org.schabi.newpipe.local.subscription.SubscriptionManager;
@@ -40,6 +41,7 @@ public final class YoutubeTakeoutImporter {
         YoutubeWatchHistoryImporter.ImportResult historyResult = null;
         YoutubePlaylistImporter.ImportResult playlistResult = null;
         Integer insertedSubscriptions = null;
+        long[] subscriptionDetailIds = null;
         String historyError = null;
         String playlistError = null;
         String subscriptionsError = null;
@@ -65,7 +67,9 @@ public final class YoutubeTakeoutImporter {
 
         if (selection.importSubscriptions) {
             try {
-                insertedSubscriptions = importSubscriptions(file);
+                final SubscriptionImportResult subscriptionResult = importSubscriptions(file);
+                insertedSubscriptions = subscriptionResult.insertedSubscriptions;
+                subscriptionDetailIds = subscriptionResult.detailSubscriptionIds;
             } catch (final Exception e) {
                 subscriptionsError = friendlyMessage(e);
                 errors.add("subscriptions: " + subscriptionsError);
@@ -78,16 +82,30 @@ public final class YoutubeTakeoutImporter {
         }
 
         return new ImportResult(historyResult, playlistResult, insertedSubscriptions,
-                historyError, playlistError, subscriptionsError);
+                subscriptionDetailIds, historyError, playlistError, subscriptionsError);
     }
 
-    private int importSubscriptions(@NonNull final StoredFileHelper file) throws Exception {
+    @NonNull
+    private SubscriptionImportResult importSubscriptions(@NonNull final StoredFileHelper file)
+            throws Exception {
         final byte[] subscriptionsCsv = readSubscriptionsCsv(file);
         final List<SubscriptionItem> subscriptionItems = NewPipe
                 .getService(ServiceList.YouTube.getServiceId())
                 .getSubscriptionExtractor()
                 .fromInputStream(new ByteArrayInputStream(subscriptionsCsv), "csv");
-        return new SubscriptionManager(context).insertAll(subscriptionItems).size();
+        final SubscriptionManager subscriptionManager = new SubscriptionManager(context);
+        final List<SubscriptionEntity> inserted =
+                subscriptionManager.insertAll(subscriptionItems);
+        final long[] idsWithoutAvatar = subscriptionManager.getIdsWithoutAvatar(subscriptionItems);
+        if (idsWithoutAvatar.length > 0) {
+            return new SubscriptionImportResult(inserted.size(), idsWithoutAvatar);
+        }
+
+        final long[] insertedIds = new long[inserted.size()];
+        for (int i = 0; i < inserted.size(); i++) {
+            insertedIds[i] = inserted.get(i).getUid();
+        }
+        return new SubscriptionImportResult(inserted.size(), insertedIds);
     }
 
     @NonNull
@@ -151,6 +169,7 @@ public final class YoutubeTakeoutImporter {
         private final YoutubeWatchHistoryImporter.ImportResult historyResult;
         private final YoutubePlaylistImporter.ImportResult playlistResult;
         private final Integer insertedSubscriptions;
+        private final long[] subscriptionDetailIds;
         private final String historyError;
         private final String playlistError;
         private final String subscriptionsError;
@@ -158,12 +177,14 @@ public final class YoutubeTakeoutImporter {
         private ImportResult(final YoutubeWatchHistoryImporter.ImportResult historyResult,
                              final YoutubePlaylistImporter.ImportResult playlistResult,
                              final Integer insertedSubscriptions,
+                             final long[] subscriptionDetailIds,
                              final String historyError,
                              final String playlistError,
                              final String subscriptionsError) {
             this.historyResult = historyResult;
             this.playlistResult = playlistResult;
             this.insertedSubscriptions = insertedSubscriptions;
+            this.subscriptionDetailIds = subscriptionDetailIds;
             this.historyError = historyError;
             this.playlistError = playlistError;
             this.subscriptionsError = subscriptionsError;
@@ -181,6 +202,11 @@ public final class YoutubeTakeoutImporter {
             return insertedSubscriptions;
         }
 
+        @NonNull
+        public long[] getInsertedSubscriptionIds() {
+            return subscriptionDetailIds == null ? new long[0] : subscriptionDetailIds;
+        }
+
         public String getHistoryError() {
             return historyError;
         }
@@ -191,6 +217,17 @@ public final class YoutubeTakeoutImporter {
 
         public String getSubscriptionsError() {
             return subscriptionsError;
+        }
+    }
+
+    private static final class SubscriptionImportResult {
+        private final int insertedSubscriptions;
+        private final long[] detailSubscriptionIds;
+
+        private SubscriptionImportResult(final int insertedSubscriptions,
+                                         @NonNull final long[] detailSubscriptionIds) {
+            this.insertedSubscriptions = insertedSubscriptions;
+            this.detailSubscriptionIds = detailSubscriptionIds;
         }
     }
 }

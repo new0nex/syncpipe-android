@@ -123,6 +123,16 @@ abstract class SubscriptionDAO : BasicDAO<SubscriptionEntity> {
     @Query("SELECT uid FROM subscriptions WHERE url LIKE :url AND service_id = :serviceId")
     internal abstract fun getSubscriptionIdInternal(serviceId: Int, url: String): Long?
 
+    @Query(
+        """
+        SELECT uid FROM subscriptions
+        WHERE service_id = :serviceId
+        AND url IN (:urls)
+        AND (avatar_url IS NULL OR avatar_url = '')
+        """
+    )
+    abstract fun getIdsWithoutAvatar(serviceId: Int, urls: List<String>): List<Long>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     internal abstract fun silentInsertAllInternal(entities: List<SubscriptionEntity>): List<Long>
 

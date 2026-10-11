@@ -1096,7 +1096,6 @@
 <string name="import_youtube_takeout_option_history">Watch history</string>
 <string name="import_youtube_takeout_option_playlists">Playlists</string>
 <string name="import_youtube_takeout_option_subscriptions">Subscriptions</string>
-<string name="import_youtube_takeout_selection_message">Select what to restore from the Google Takeout ZIP. Re-importing is safe: existing matching items are merged instead of duplicated.</string>
 <string name="import_youtube_takeout_ongoing">Importing YouTube Takeout…</string>
 <string name="import_youtube_takeout_nothing_selected">Select at least one item to import</string>
 <string name="import_youtube_takeout_history_result">History: imported %1$d unique videos from %2$d watch events. %3$d repeated watches were merged.</string>
