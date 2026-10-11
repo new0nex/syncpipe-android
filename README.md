@@ -4,6 +4,8 @@ SyncPipe is an unofficial Android app fork based on [PipePipe](https://github.co
 
 This repository is focused on the Android APK source code. It is not intended to mirror or maintain a full wiki/community site here.
 
+See [ROADMAP.md](ROADMAP.md) for the current SyncPipe direction, upstream tracking plan, and release/update roadmap.
+
 ## Beyond PipePipe
 
 SyncPipe starts from PipePipe and aims to improve many small daily-use issues while keeping the practical features that make PipePipe useful.
