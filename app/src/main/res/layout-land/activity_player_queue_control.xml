@@ -173,6 +173,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/exo_controls_fastforward"
                 android:tint="?attr/colorAccent"
+                android:visibility="gone"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
 

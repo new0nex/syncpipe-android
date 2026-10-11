@@ -255,7 +255,8 @@
             android:focusable="true"
             android:scaleType="fitCenter"
             android:src="@drawable/exo_controls_fastforward"
-            android:tint="?attr/colorAccent" />
+            android:tint="?attr/colorAccent"
+            android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/control_forward"

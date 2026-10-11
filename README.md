@@ -1,3 +1,69 @@
-## README
+# SyncPipe
 
-The client of [PipePipe](https://codeberg.org/NullPointerException/PipePipe).
+SyncPipe is an unofficial Android app fork based on [PipePipe](https://github.com/InfinityLoop1308/PipePipe), which is itself based on [NewPipe](https://github.com/TeamNewPipe/NewPipe).
+
+This repository is focused on the Android APK source code. It is not intended to mirror or maintain a full wiki/community site here.
+
+## Beyond PipePipe
+
+SyncPipe starts from PipePipe and aims to improve many small daily-use issues while keeping the practical features that make PipePipe useful.
+
+The long-term direction is user-owned sync across the same user's devices. The planned sync design should be end-to-end encrypted, with the server acting only as a pipe for encrypted data rather than a place that can read the user's content.
+
+## Screenshots
+
+same as pipepipe
+
+## About This Fork
+
+This fork is meant to be practical, stable, and personal-first:
+
+- improve small player, import, and settings issues
+- keep useful PipePipe behavior where it works well
+- add clean import/export flows
+- prepare for private, end-to-end encrypted sync later
+
+## Features Added In SyncPipe
+
+### YouTube Takeout Import
+
+SyncPipe adds a unified YouTube Takeout importer in settings.
+
+The importer can read a Google Takeout ZIP and import:
+
+- YouTube watch history
+- YouTube playlists
+- YouTube subscriptions
+
+Watch history import stores one local history item per unique YouTube video. If the same video appears multiple times in the Takeout history, SyncPipe preserves those repeated watches as repeat counts instead of creating duplicate history rows.
+
+Playlist import keeps private/export-only playlists as local playlists. Public or online playlists can be represented as online playlist bookmarks when the Takeout data contains a usable public playlist id.
+
+Subscription import reads YouTube subscriptions from the same Takeout ZIP, so users can restore history, playlists, and subscriptions from one import flow.
+
+## About Sign In
+
+Sign-in and cookie/session behavior stays aligned with PipePipe unless this fork clearly documents a future change.
+
+Do not embed personal Google tokens, cookies, or private credentials into the APK or source tree.
+
+## Contribute
+
+Issues are welcome.
+
+Pull requests are not accepted for now.
+
+Feature requests are very welcome.
+
+## Special Thanks
+
+Special thanks to:
+
+- the NewPipe project and contributors
+- the PipePipe project and contributors
+- all upstream libraries and projects already credited by NewPipe and PipePipe
+- everyone who reports issues, tests builds, and suggests features
+
+## License
+
+SyncPipe follows the license obligations of its upstream projects. See [LICENSE](LICENSE).

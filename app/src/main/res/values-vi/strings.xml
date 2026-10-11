@@ -172,10 +172,10 @@ của YouTube
 <string name="just_once">Chỉ một lần</string>
 <string name="file">Tệp</string>
 <string name="notifications">Thông báo</string>
-<string name="notification_channel_name">Thông báo PipePipe</string>
-<string name="notification_channel_description">Thông báo cho trình phát của PipePipe</string>
+<string name="notification_channel_name">Thông báo SyncPipe</string>
+<string name="notification_channel_description">Thông báo cho trình phát của SyncPipe</string>
 <string name="app_update_notification_channel_name">Thông báo cập nhật ứng dụng</string>
-<string name="app_update_notification_channel_description_new">Thông báo về phiên bản PipePipe mới</string>
+<string name="app_update_notification_channel_description_new">Thông báo về phiên bản SyncPipe mới</string>
 <string name="hash_channel_name">Thông báo băm băng hình</string>
 <string name="hash_channel_description">Thông báo về tiến trình băm băng hình</string>
 <string name="streams_notification_channel_name">Luồng mới</string>
@@ -192,7 +192,7 @@ của YouTube
 <string name="recaptcha_cookies_cleared">Đã xóa cookie reCAPTCHA</string>
 <string name="import_data_summary">Ghi đè lịch sử, đăng ký, danh sách phát và thiết đặt (tùy chọn) hiện tại của bạn</string>
 <string name="export_data_summary">Xuất lịch sử, đăng ký, danh sách phát và thiết đặt</string>
-<string name="clear_cookie_summary_new">Xóa cookie mà PipePipe lưu trữ khi bạn giải reCAPTCHA</string>
+<string name="clear_cookie_summary_new">Xóa cookie mà SyncPipe lưu trữ khi bạn giải reCAPTCHA</string>
 <string name="clear_views_history_title">Xóa lịch sử xem</string>
 <string name="clear_views_history_summary">Xóa lịch sử các luồng đã phát và vị trí phát lại</string>
 <string name="delete_view_history_alert">Xóa toàn bộ lịch sử xem?</string>
@@ -236,7 +236,7 @@ của YouTube
 <string name="permission_display_over_apps">Cấp quyền hiển thị trên các ứng dụng khác</string>
 <string name="invalid_color_toast">Màu không hợp lệ</string>
 <!-- error activity -->
-<string name="error_report_notification_title_new">PipePipe gặp lỗi, nhấn để báo cáo</string>
+<string name="error_report_notification_title_new">SyncPipe gặp lỗi, nhấn để báo cáo</string>
 <string name="error_report_notification_toast">Đã xảy ra lỗi, hãy xem thông báo</string>
 <string name="sorry_string">Xin lỗi, điều đó lẽ ra không nên xảy ra.</string>
 <string name="error_report_button_text">Báo cáo lỗi này qua e-mail</string>
@@ -315,7 +315,7 @@ của YouTube
 <string name="msg_name">Tên tệp</string>
 <string name="msg_threads">Chủ đề</string>
 <string name="msg_error">Lỗi</string>
-<string name="msg_running_new">Đang tải xuống PipePipe</string>
+<string name="msg_running_new">Đang tải xuống SyncPipe</string>
 <string name="msg_running_detail">Nhấn để biết chi tiết</string>
 <string name="msg_calculating_hash">Đang tính hàm băm</string>
 <string name="msg_wait">Xin vui lòng đợi…</string>
@@ -337,7 +337,7 @@ của YouTube
 <string name="charset_most_special_characters">Hầu hết các ký tự đặc biệt</string>
 <string name="toast_no_player">Chưa cài đặt ứng dụng nào để phát tệp này</string>
 <!-- About -->
-<string name="title_activity_about_new">Về PipePipe</string>
+<string name="title_activity_about_new">Về SyncPipe</string>
 <string name="title_licenses">Giấy phép của bên thứ ba</string>
 <string name="copyright">© %1$s bởi %2$s dưới %3$s</string>
 <string name="tab_about">Giới thiệu</string>
@@ -533,8 +533,8 @@ của YouTube
 <string name="low_quality_smaller">Chất lượng thấp (nhỏ hơn)</string>
 <string name="dont_show">Đừng hiển thị</string>
 <!-- App update notification -->
-<string name="app_update_unavailable_toast">Bạn đang chạy phiên bản mới nhất của PipePipe</string>
-<string name="app_update_notification_content_title_new">Đã có bản cập nhật PipePipe!</string>
+<string name="app_update_unavailable_toast">Bạn đang chạy phiên bản mới nhất của SyncPipe</string>
+<string name="app_update_notification_content_title_new">Đã có bản cập nhật SyncPipe!</string>
 <string name="app_update_notification_content_text">Nhấn để tải xuống</string>
 <string name="missions_header_finished">Đã hoàn tất</string>
 <string name="missions_header_pending">Đang chờ xử lý</string>
@@ -570,7 +570,7 @@ của YouTube
 <string name="error_http_unsupported_range">Máy chủ không chấp nhận tải đa luồng, thử lại với @string/msg_threads = 1</string>
 <string name="error_http_not_found">Không tìm thấy</string>
 <string name="error_postprocessing_failed">Xử lý hậu kỳ không được</string>
-<string name="error_postprocessing_stopped_new">PipePipe đã bị đóng khi đang làm việc trên tệp</string>
+<string name="error_postprocessing_stopped_new">SyncPipe đã bị đóng khi đang làm việc trên tệp</string>
 <string name="error_insufficient_storage">Không còn chỗ trống trên thiết bị</string>
 <string name="error_progress_lost">Tiến trình bị mất vì tệp đã bị xóa</string>
 <string name="error_timeout">Hết thời gian kết nối</string>
@@ -647,7 +647,7 @@ của YouTube
 <string name="feed_update_threshold_option_always_update">Luôn cập nhật</string>
 <string name="feed_load_error">Lỗi tải nguồn cấp</string>
 <string name="feed_load_error_account_info">Không thể tải nguồn cấp cho \'%s\'.</string>
-<string name="feed_load_error_terminated_new">Tài khoản của tác giả đã bị chấm dứt.\nPipePipe sẽ không thể tải nguồn cấp này trong tương lai.\nBạn có muốn hủy đăng ký kênh này không?</string>
+<string name="feed_load_error_terminated_new">Tài khoản của tác giả đã bị chấm dứt.\nSyncPipe sẽ không thể tải nguồn cấp này trong tương lai.\nBạn có muốn hủy đăng ký kênh này không?</string>
 <string name="feed_load_error_fast_unknown">Chế độ nạp nhanh không cung cấp thêm thông tin về điều này.</string>
 <string name="feed_use_dedicated_fetch_method_title">Tìm nạp từ nguồn cấp chuyên dụng khi có sẵn</string>
 <string name="feed_use_dedicated_fetch_method_summary">Có sẵn trong một số dịch vụ, nó thường nhanh hơn nhiều nhưng có thể trả về một số lượng mục hạn chế và thông tin thường không đầy đủ (ví dụ: không có thời lượng, loại mục, không có trạng thái hoạt động)</string>
@@ -655,7 +655,7 @@ của YouTube
 <string name="feed_use_dedicated_fetch_method_disable_button">Tắt chế độ nhanh</string>
 <string name="feed_use_dedicated_fetch_method_help_text_new">Bạn có nghĩ rằng tải nguồn cấp quá chậm\? Nếu vậy, hãy thử bật tải nhanh (bạn có thể thay đổi nó trong thiết đặt hoặc bằng cách nhấn nút bên dưới).
 \n
-\nPipePipe cung cấp hai chiến lược tải nguồn cấp:
+\nSyncPipe cung cấp hai chiến lược tải nguồn cấp:
 \n→ Đang tìm nạp toàn bộ kênh đăng ký, tuy chậm nhưng đầy đủ.
 \n→ Sử dụng điểm cuối dịch vụ chuyên dụng, tốc độ này nhanh nhưng thường không hoàn thiện.
 \n
@@ -688,7 +688,7 @@ nSự khác biệt giữa hai loại này là cái nào nhanh thường thiếu 
 <string name="sponsor_block_skip_filler_toast">Đã bỏ qua phần bổ sung</string>
 <string name="sponsor_block_confirm_reset_colors">Bạn có chắc chắn muốn đặt lại màu danh mục không?</string>
 <!--End -->
-<string name="content_not_supported_new">Nội dung này chưa được PipePipe hỗ trợ.\n\nHy vọng nó sẽ được hỗ trợ trong phiên bản tương lai.</string>
+<string name="content_not_supported_new">Nội dung này chưa được SyncPipe hỗ trợ.\n\nHy vọng nó sẽ được hỗ trợ trong phiên bản tương lai.</string>
 <string name="detail_sub_channel_thumbnail_view_description">Hình thu nhỏ hình đại diện của kênh</string>
 <string name="channel_created_by">Được tạo bởi %s</string>
 <string name="video_detail_by">Bởi %s</string>
@@ -703,13 +703,13 @@ nSự khác biệt giữa hai loại này là cái nào nhanh thường thiếu 
 <string name="no_appropriate_file_manager_message_android_10">Không tìm thấy trình quản lý tệp thích hợp cho tác vụ này.
 \nHãy cài đặt trình quản lý tệp tương thích với Khung truy cập lưu trữ</string>
 <string name="georestricted_content">Nội dung này không có ở quốc gia của bạn.</string>
-<string name="soundcloud_go_plus_content_new">Đây là bản nhạc SoundCloud Go+, ít nhất là ở quốc gia của bạn, vì vậy PipePipe không thể phát trực tuyến hoặc tải xuống bản nhạc này.</string>
-<string name="private_content_new">Nội dung này là riêng tư nên PipePipe không thể phát trực tuyến hoặc tải xuống.</string>
-<string name="youtube_music_premium_content_new">Băng hình này chỉ dành cho thành viên YouTube Music Premium nên PipePipe không thể phát trực tuyến hoặc tải xuống.</string>
+<string name="soundcloud_go_plus_content_new">Đây là bản nhạc SoundCloud Go+, ít nhất là ở quốc gia của bạn, vì vậy SyncPipe không thể phát trực tuyến hoặc tải xuống bản nhạc này.</string>
+<string name="private_content_new">Nội dung này là riêng tư nên SyncPipe không thể phát trực tuyến hoặc tải xuống.</string>
+<string name="youtube_music_premium_content_new">Băng hình này chỉ dành cho thành viên YouTube Music Premium nên SyncPipe không thể phát trực tuyến hoặc tải xuống.</string>
 <string name="live_not_started">Buổi phát trực tiếp vẫn chưa bắt đầu.</string>
 <string name="account_terminated">Tài khoản bị chấm dứt</string>
 <string name="service_provides_reason">%s cung cấp lý do này:</string>
-<string name="paid_content_new">Nội dung này chỉ dành cho những người dùng đã trả phí nên PipePipe không thể phát trực tuyến hoặc tải xuống nội dung này.</string>
+<string name="paid_content_new">Nội dung này chỉ dành cho những người dùng đã trả phí nên SyncPipe không thể phát trực tuyến hoặc tải xuống nội dung này.</string>
 <string name="featured">Nổi bật</string>
 <string name="radio">Đài phát thanh</string>
 <string name="auto_device_theme_title">Tự động (chủ đề thiết bị)</string>
@@ -864,13 +864,13 @@ nSự khác biệt giữa hai loại này là cái nào nhanh thường thiếu 
 <string name="speeding_playback_title">Nhấn và giữ để tăng tốc độ phát lại</string>
 <string name="view_on_github">Xem trên GitHub</string>
 <string name="donation_dialog_title">Hỗ trợ Dự án</string>
-<string name="donation_dialog_message">Cảm ơn bạn đã sử dụng PipePipe! Nếu bạn thấy nó hữu ích, hãy xem xét trở thành người ủng hộ trên Ko-Fi. Sự ủng hộ của bạn rất quan trọng đối với tôi và giúp tôi bổ sung thêm nhiều tính năng mới thú vị. Mỗi sự hỗ trợ đều có ý nghĩa! 😇</string>
+<string name="donation_dialog_message">Cảm ơn bạn đã sử dụng SyncPipe! Nếu bạn thấy nó hữu ích, hãy xem xét trở thành người ủng hộ trên Ko-Fi. Sự ủng hộ của bạn rất quan trọng đối với tôi và giúp tôi bổ sung thêm nhiều tính năng mới thú vị. Mỗi sự hỗ trợ đều có ý nghĩa! 😇</string>
 <string name="fullscreen_gesture_control_summary">Sử dụng cử chỉ để vào / thoát toàn màn hình</string>
 <string name="fullscreen_gesture_control_title">Điều khiển cử chỉ toàn màn hình</string>
-<string name="require_audio_focus_summary">Đảm bảo chỉ có PipePipe đang phát âm thanh</string>
+<string name="require_audio_focus_summary">Đảm bảo chỉ có SyncPipe đang phát âm thanh</string>
 <string name="require_audio_focus_title">Yêu cầu tiêu điểm âm thanh</string>
 <string name="decoder_init_failure">Khởi tạo bộ giải mã thất bại</string>
-<string name="unable_to_decode_summary">Thiết bị của bạn thiếu các bộ giải mã phần cứng cần thiết, vì vậy bạn không thể phát video này trong PipePipe. \nVui lòng tải xuống và phát nó trong VLC.</string>
+<string name="unable_to_decode_summary">Thiết bị của bạn thiếu các bộ giải mã phần cứng cần thiết, vì vậy bạn không thể phát video này trong SyncPipe. \nVui lòng tải xuống và phát nó trong VLC.</string>
 <string name="settings_category_gestures_summary">Cài đặt cử chỉ</string>
 <string name="settings_category_bullet_comments_summary">Cài đặt bình luận đạn</string>
 <string name="settings_category_backup_title">Sao lưu</string>
@@ -1103,7 +1103,7 @@ nSự khác biệt giữa hai loại này là cái nào nhanh thường thiếu 
 <string name="import_soundcloud_subscriptions_title">Nhập từ SoundCloud</string>
 <string name="import_soundcloud_subscriptions_summary">Nhập các đăng ký từ một hồ sơ SoundCloud</string>
 <string name="clear_subscriptions_title">Xóa đăng ký</string>
-<string name="clear_subscriptions_summary">Xóa tất cả các kênh đã đăng ký khỏi PipePipe</string>
+<string name="clear_subscriptions_summary">Xóa tất cả các kênh đã đăng ký khỏi SyncPipe</string>
 <string name="clear_subscriptions_confirmation">Xóa tất cả đăng ký? Hành động này không thể hoàn tác.</string>
 <string name="subscriptions_cleared">Đã xóa đăng ký</string>
 <string name="fetch_subscription_details_title">Lấy thông tin chi tiết kênh?</string>

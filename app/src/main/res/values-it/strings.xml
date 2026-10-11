@@ -167,10 +167,10 @@
 <string name="just_once">Solo una volta</string>
 <string name="file">File</string>
 <string name="notifications">Notifiche</string>
-<string name="notification_channel_name">Notifica PipePipe</string>
-<string name="notification_channel_description">Notifiche per il player di PipePipe</string>
+<string name="notification_channel_name">Notifica SyncPipe</string>
+<string name="notification_channel_description">Notifiche per il player di SyncPipe</string>
 <string name="app_update_notification_channel_name">Notifica aggiornamento app</string>
-<string name="app_update_notification_channel_description_new">Notifiche per le nuove versioni di PipePipe</string>
+<string name="app_update_notification_channel_description_new">Notifiche per le nuove versioni di SyncPipe</string>
 <string name="hash_channel_name">Notifica hash video</string>
 <string name="hash_channel_description">Notifiche sul progresso dell\'hashing video</string>
 <string name="streams_notification_channel_name">Nuovi stream</string>
@@ -187,7 +187,7 @@
 <string name="recaptcha_cookies_cleared">Cookie reCAPTCHA sono stati cancellati</string>
 <string name="import_data_summary">Sovrascrive la tua cronologia attuale, abbonamenti, playlist e (facoltativamente) impostazioni</string>
 <string name="export_data_summary">Esporta cronologia, abbonamenti, playlist e impostazioni</string>
-<string name="clear_cookie_summary_new">Cancella i cookie che PipePipe memorizza quando risolvi un reCAPTCHA</string>
+<string name="clear_cookie_summary_new">Cancella i cookie che SyncPipe memorizza quando risolvi un reCAPTCHA</string>
 <string name="clear_views_history_title">Cancella cronologia visualizzazioni</string>
 <string name="clear_views_history_summary">Elimina la cronologia degli stream riprodotti e le posizioni di riproduzione</string>
 <string name="delete_view_history_alert">Eliminare l\'intera cronologia visualizzazioni?</string>
@@ -229,7 +229,7 @@
 <string name="restore_defaults_confirmation">Vuoi ripristinare i predefiniti?</string>
 <string name="permission_display_over_apps">Concedi il permesso di visualizzare su altre app</string>
 <string name="invalid_color_toast">Colore non valido</string>
-<string name="error_report_notification_title_new">PipePipe ha riscontrato un errore, tocca per segnalare</string>
+<string name="error_report_notification_title_new">SyncPipe ha riscontrato un errore, tocca per segnalare</string>
 <string name="error_report_notification_toast">Si è verificato un errore, vedere la notifica</string>
 <string name="sorry_string">Scusate, non sarebbe dovuto succedere.</string>
 <string name="error_report_button_text">Segnala questo errore via e-mail</string>
@@ -280,7 +280,7 @@
 <string name="msg_name">Nome del file</string>
 <string name="msg_threads">Thread</string>
 <string name="msg_error">Errore</string>
-<string name="msg_running_new">PipePipe Scaricamento</string>
+<string name="msg_running_new">SyncPipe Scaricamento</string>
 <string name="msg_running_detail">Tocca per dettagli</string>
 <string name="msg_calculating_hash">Calcolando hash</string>
 <string name="msg_wait">Attendere prego…</string>
@@ -392,8 +392,8 @@
 <string name="high_quality_larger">Alta qualità (più grande)</string>
 <string name="low_quality_smaller">Bassa qualità (più piccolo)</string>
 <string name="dont_show">Non mostrare</string>
-<string name="app_update_unavailable_toast">Stai utilizzando l\'ultima versione di PipePipe</string>
-<string name="app_update_notification_content_title_new">È disponibile un aggiornamento di PipePipe!</string>
+<string name="app_update_unavailable_toast">Stai utilizzando l\'ultima versione di SyncPipe</string>
+<string name="app_update_notification_content_title_new">È disponibile un aggiornamento di SyncPipe!</string>
 <string name="app_update_notification_content_text">Tocca per scaricare</string>
 <string name="missions_header_finished">Finito</string>
 <string name="missions_header_pending">In sospeso</string>
@@ -422,7 +422,7 @@
 <string name="error_http_unsupported_range">Il server non accetta download multi-thread, riprova con @string/msg_threads = 1</string>
 <string name="error_http_not_found">Non trovato</string>
 <string name="error_postprocessing_failed">La post-elaborazione è fallita</string>
-<string name="error_postprocessing_stopped_new">PipePipe è stato chiuso durante il lavoro sul file</string>
+<string name="error_postprocessing_stopped_new">SyncPipe è stato chiuso durante il lavoro sul file</string>
 <string name="error_insufficient_storage">Non c\'è spazio sufficiente sul dispositivo</string>
 <string name="error_progress_lost">Progressi persi, perché il file è stato eliminato</string>
 <string name="error_timeout">Timeout di connessione</string>
@@ -473,7 +473,7 @@
 <string name="feed_update_threshold_option_always_update">Aggiorna sempre</string>
 <string name="feed_load_error">Errore nel caricamento del feed</string>
 <string name="feed_load_error_account_info">Impossibile caricare il feed per \'%s\'.</string>
-<string name="feed_load_error_terminated_new">L\'account dell\'autore è stato terminato.\nPipePipe non sarà in grado di caricare questo feed in futuro.\nVuoi annullare l\'abbonamento a questo canale?</string>
+<string name="feed_load_error_terminated_new">L\'account dell\'autore è stato terminato.\nSyncPipe non sarà in grado di caricare questo feed in futuro.\nVuoi annullare l\'abbonamento a questo canale?</string>
 <string name="feed_load_error_fast_unknown">La modalità feed veloce non fornisce ulteriori informazioni su questo.</string>
 <string name="feed_use_dedicated_fetch_method_title">Scarica dal feed dedicato quando disponibile</string>
 <string name="feed_use_dedicated_fetch_method_summary">Disponibile in alcuni servizi, è generalmente molto più veloce ma può restituire un numero limitato di elementi e informazioni spesso incomplete (es. nessuna durata, tipo di elemento, nessun live status)</string>
@@ -481,7 +481,7 @@
 <string name="feed_use_dedicated_fetch_method_disable_button">Disabilita modalità veloce</string>
 <string name="feed_use_dedicated_fetch_method_help_text_new">Pensi che il caricamento del feed sia troppo lento\? Se sì, prova ad abilitare il caricamento veloce (puoi cambiarlo nelle impostazioni o premendo il pulsante qui sotto).
 \n
-\nPipePipe offre due strategie di caricamento del feed:
+\nSyncPipe offre due strategie di caricamento del feed:
 \n• Raccogliere l\'intero canale dell\'abbonamento, che è lento ma completo.
 \n• Usare un endpoint di servizio dedicato, che è veloce ma generalmente non completo.
 \n
@@ -514,7 +514,7 @@
 <string name="sponsor_block_skip_preview_toast">Anteprima/riassunto saltato</string>
 <string name="sponsor_block_skip_filler_toast">Riempitivo saltato</string>
 <string name="sponsor_block_confirm_reset_colors">Sei sicuro di voler reimpostare i colori delle categorie?</string>
-<string name="content_not_supported_new">Questo contenuto non è ancora supportato da PipePipe. \n\nSarà probabilmente supportato in una versione futura.</string>
+<string name="content_not_supported_new">Questo contenuto non è ancora supportato da SyncPipe. \n\nSarà probabilmente supportato in una versione futura.</string>
 <string name="detail_sub_channel_thumbnail_view_description">Miniatura dell\'avatar del canale</string>
 <string name="channel_created_by">Creato da %s</string>
 <string name="video_detail_by">Di %s</string>
@@ -527,13 +527,13 @@
 <string name="no_appropriate_file_manager_message">Nessun file manager appropriato è stato trovato per questa azione. \n\nSi prega di installare un file manager o provare a disabilitare \'%s\' nelle impostazioni di download</string>
 <string name="no_appropriate_file_manager_message_android_10">Nessun file manager appropriato è stato trovato per questa azione. \n\nSi prega di installare un file manager compatibile con il Framework di Accesso allo Storage</string>
 <string name="georestricted_content">Questo contenuto non è disponibile nel tuo paese.</string>
-<string name="soundcloud_go_plus_content_new">Questa è una traccia di SoundCloud Go+, almeno nel tuo paese, quindi non può essere trasmessa o scaricata da PipePipe.</string>
-<string name="private_content_new">Questo contenuto è privato, quindi non può essere trasmesso o scaricato da PipePipe.</string>
-<string name="youtube_music_premium_content_new">Questo video è disponibile solo per i membri di YouTube Music Premium, quindi non può essere trasmesso o scaricato da PipePipe.</string>
+<string name="soundcloud_go_plus_content_new">Questa è una traccia di SoundCloud Go+, almeno nel tuo paese, quindi non può essere trasmessa o scaricata da SyncPipe.</string>
+<string name="private_content_new">Questo contenuto è privato, quindi non può essere trasmesso o scaricato da SyncPipe.</string>
+<string name="youtube_music_premium_content_new">Questo video è disponibile solo per i membri di YouTube Music Premium, quindi non può essere trasmesso o scaricato da SyncPipe.</string>
 <string name="live_not_started">La diretta non è ancora iniziata.</string>
 <string name="account_terminated">Account terminato</string>
 <string name="service_provides_reason">%s fornisce questo motivo:</string>
-<string name="paid_content_new">Questo contenuto è disponibile solo per gli utenti che hanno pagato, quindi non può essere trasmesso o scaricato da PipePipe.</string>
+<string name="paid_content_new">Questo contenuto è disponibile solo per gli utenti che hanno pagato, quindi non può essere trasmesso o scaricato da SyncPipe.</string>
 <string name="featured">In primo piano</string>
 <string name="radio">Radio</string>
 <string name="auto_device_theme_title">Automatico (tema dispositivo)</string>
@@ -683,13 +683,13 @@
 <string name="speeding_playback_title">Premi a lungo per aumentare la velocità di riproduzione</string>
 <string name="view_on_github">Visualizza su GitHub</string>
 <string name="donation_dialog_title">Supporta il progetto</string>
-<string name="donation_dialog_message">Grazie per usare PipePipe! Se lo trovi utile, considera di diventare un sostenitore su Ko-Fi. Il tuo supporto è importante per me e mi aiuta ad aggiungere nuove ed entusiasmanti funzionalità. Ogni contributo conta! 😇</string>
+<string name="donation_dialog_message">Grazie per usare SyncPipe! Se lo trovi utile, considera di diventare un sostenitore su Ko-Fi. Il tuo supporto è importante per me e mi aiuta ad aggiungere nuove ed entusiasmanti funzionalità. Ogni contributo conta! 😇</string>
 <string name="fullscreen_gesture_control_summary">Usa i gesti per entrare/uscire dalla modalità schermo intero</string>
 <string name="fullscreen_gesture_control_title">Controllo gestuale a schermo intero</string>
-<string name="require_audio_focus_summary">Assicurati che solo PipePipe stia riproducendo audio</string>
+<string name="require_audio_focus_summary">Assicurati che solo SyncPipe stia riproducendo audio</string>
 <string name="require_audio_focus_title">Richiedi il focus audio</string>
 <string name="decoder_init_failure">Inizializzazione del decoder fallita</string>
-<string name="unable_to_decode_summary">Il tuo dispositivo non dispone dei decodificatori hardware richiesti, quindi non puoi riprodurre questo video in PipePipe.\nPer favore, scaricalo e riproducilo in VLC.</string>
+<string name="unable_to_decode_summary">Il tuo dispositivo non dispone dei decodificatori hardware richiesti, quindi non puoi riprodurre questo video in SyncPipe.\nPer favore, scaricalo e riproducilo in VLC.</string>
 <string name="settings_category_gestures_summary">Impostazioni dei gesti</string>
 <string name="settings_category_bullet_comments_summary">Impostazioni dei commenti a proiettile</string>
 <string name="settings_category_backup_title">Backup</string>
@@ -877,7 +877,7 @@
 <string name="enqueued_next">Prossimo in coda</string>
 <string name="start_here_on_background">Inizia la riproduzione in background</string>
 <string name="start_here_on_popup">Inizia la riproduzione in un popup</string>
-<string name="title_activity_about_new">Informazioni su PipePipe</string>
+<string name="title_activity_about_new">Informazioni su SyncPipe</string>
 <string name="show_crash_the_player_summary">Mostra un\'opzione di arresto anomalo quando si usa il lettore</string>
 <string name="check_new_streams">Esegui controllo per nuovi stream</string>
 <string name="crash_the_app">Arresta l\'app</string>
@@ -988,7 +988,7 @@
 <string name="import_soundcloud_subscriptions_title">Importa da SoundCloud</string>
 <string name="import_soundcloud_subscriptions_summary">Importa le iscrizioni da un profilo SoundCloud</string>
 <string name="clear_subscriptions_title">Cancella iscrizioni</string>
-<string name="clear_subscriptions_summary">Rimuovi tutti i canali a cui sei iscritto da PipePipe</string>
+<string name="clear_subscriptions_summary">Rimuovi tutti i canali a cui sei iscritto da SyncPipe</string>
 <string name="clear_subscriptions_confirmation">Cancellare tutte le iscrizioni? Questa operazione non può essere annullata.</string>
 <string name="subscriptions_cleared">Iscrizioni cancellate</string>
 <string name="fetch_subscription_details_title">Recuperare i dettagli del canale?</string>

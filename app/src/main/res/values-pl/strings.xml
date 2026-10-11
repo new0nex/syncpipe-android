@@ -68,7 +68,7 @@
 <string name="msg_threads">Wątki</string>
 <string name="msg_error">Błąd</string>
 <string name="msg_running">Pobieranie NewPipe</string>
-<string name="msg_running_new">Pobieranie PipePipe</string>
+<string name="msg_running_new">Pobieranie SyncPipe</string>
 <string name="msg_running_detail">Naciśnij, aby zobaczyć szczegóły</string>
 <string name="msg_wait">Proszę czekać…</string>
 <string name="msg_copied">Skopiowano do schowka</string>
@@ -99,7 +99,7 @@
 <string name="settings_category_downloads_title">Pobieranie</string>
 <string name="charset_letters_and_digits">Litery i cyfry</string>
 <string name="title_activity_about">O NewPipe</string>
-<string name="title_activity_about_new">O PipePipe</string>
+<string name="title_activity_about_new">O SyncPipe</string>
 <string name="title_licenses">Licencje innych firm</string>
 <string name="tab_about">O aplikacji</string>
 <string name="app_description">Lekkie przesyłanie strumieniowe w systemie Android.</string>
@@ -317,7 +317,7 @@
 <string name="preferred_open_action_settings_summary">Domyślna akcja podczas otwierania zawartości — %s</string>
 <string name="caption_setting_title">Napisy</string>
 <string name="caption_setting_description">Zmodyfikuj rozmiar tekstu napisów odtwarzacza i style tła. Wymaga ponownego uruchomienia aplikacji, aby zmiany zostały uwzględnione</string>
-<string name="clear_cookie_summary_new">Wyczyść ciasteczka które przechowuje PipePipe po rozwiązaniu reCAPTCHA</string>
+<string name="clear_cookie_summary_new">Wyczyść ciasteczka które przechowuje SyncPipe po rozwiązaniu reCAPTCHA</string>
 <string name="clear_views_history_title">Wyczyść historię oglądania</string>
 <string name="clear_views_history_summary">Usuwa historię odtworzonych strumieni i pozycje odtwarzania</string>
 <string name="delete_view_history_alert">Usunąć całą historię oglądania\?</string>
@@ -369,7 +369,7 @@
 <string name="grid">Siatka</string>
 <string name="card">Karta</string>
 <string name="auto">Automatyczny</string>
-<string name="app_update_notification_content_title_new">Jest dostępna aktualizacja PipePipe.</string>
+<string name="app_update_notification_content_title_new">Jest dostępna aktualizacja SyncPipe.</string>
 <string name="app_update_notification_content_text">Naciśnij, aby pobrać</string>
 <string name="missions_header_finished">Zakończone</string>
 <string name="paused">wstrzymane</string>
@@ -412,7 +412,7 @@
 <string name="overwrite_unrelated_warning">Plik o tej nazwie już istnieje</string>
 <string name="overwrite_failed">Nie udało się nadpisać pliku</string>
 <string name="download_already_pending">Plik o tej samej nazwie oczekuje na pobranie</string>
-<string name="error_postprocessing_stopped_new">PipePipe został zamknięty podczas pracy nad plikiem</string>
+<string name="error_postprocessing_stopped_new">SyncPipe został zamknięty podczas pracy nad plikiem</string>
 <string name="error_insufficient_storage">Brak miejsca na urządzeniu</string>
 <string name="error_progress_lost">Utracono postęp, ponieważ plik został usunięty</string>
 <string name="confirm_prompt">Czy chcesz wyczyścić historię pobierania, czy usunąć wszystkie pobrane pliki\?</string>
@@ -544,7 +544,7 @@
 <string name="show_original_time_ago_title">Pokazuj oryginalny czas na pozycjach</string>
 <string name="video_detail_by">Przez %s</string>
 <string name="channel_created_by">Utworzony przez %s</string>
-<string name="content_not_supported_new">Ta treść nie jest jeszcze obsługiwana przez  PipePipe. Oby byłaby obsługiwana w przyszłej wersji.</string>
+<string name="content_not_supported_new">Ta treść nie jest jeszcze obsługiwana przez  SyncPipe. Oby byłaby obsługiwana w przyszłej wersji.</string>
 <string name="detail_sub_channel_thumbnail_view_description">Miniatura awatara kanału</string>
 <string name="feed_group_show_only_ungrouped_subscriptions">Pokaż tylko niezgrupowane</string>
 <string name="playlist_page_summary">Strona playlisty</string>
@@ -585,7 +585,7 @@
 <string name="recent">Ostatnie</string>
 <string name="msg_calculating_hash">Obliczanie skrótu</string>
 <string name="hash_channel_description">Powiadomienia o postępie tworzenia skrótów wideo</string>
-<string name="app_update_notification_channel_description_new">Powiadomienia o nowych wersjach PipePipe</string>
+<string name="app_update_notification_channel_description_new">Powiadomienia o nowych wersjach SyncPipe</string>
 <string name="hash_channel_name">Powiadomienie o obliczaniu skrótu wideo</string>
 <string name="show_meta_info_summary">Wyłącz, aby ukryć pola z dodatkowymi informacjami o twórcy strumienia, zawartości strumienia lub żądaniu wyszukiwania</string>
 <string name="show_meta_info_title">Pokazuj metadane</string>
@@ -598,7 +598,7 @@
 <string name="crash_the_app">Zepsuj aplikację</string>
 <string name="georestricted_content">Ta treść nie jest dostępna w Twoim kraju</string>
 <string name="radio">Radio</string>
-<string name="paid_content_new">Ta treść jest tylko dostępna dla użytkowników którz zapłacili, więc nie może być odtwarzany i pobierany przez PipePipe.</string>
+<string name="paid_content_new">Ta treść jest tylko dostępna dla użytkowników którz zapłacili, więc nie może być odtwarzany i pobierany przez SyncPipe.</string>
 <string name="featured">Polecane</string>
 <string name="recaptcha_solve">Rozwiąż</string>
 <string name="select_night_theme_toast">Możesz wybrać swój ulubiony motyw nocny poniżej</string>
@@ -628,14 +628,14 @@
 <string name="service_provides_reason">%s podaje ten powód:</string>
 <string name="live_not_started">Ta transmisja na żywo jeszcze się nie rozpoczęła.</string>
 <string name="account_terminated">Konto zamknięte</string>
-<string name="feed_load_error_terminated_new">Konto autora zostało zamknięte. PipePipe nie będzie mógł już nic załadować z tego źródła w przyszłości. Czy chcesz odsubskrybować ten kanał?</string>
+<string name="feed_load_error_terminated_new">Konto autora zostało zamknięte. SyncPipe nie będzie mógł już nic załadować z tego źródła w przyszłości. Czy chcesz odsubskrybować ten kanał?</string>
 <string name="feed_load_error_fast_unknown">Tryb szybki dla ładowania kanału nie dostarcza więcej informacji na ten temat.</string>
 <string name="feed_load_error_account_info">Nie udało się załadować kanału dla „%s”.</string>
 <string name="downloads_storage_ask_summary_no_saf_notice">Zostaniesz zapytany(-na), gdzie zapisać każdy pobierany plik</string>
 <string name="no_dir_yet">Nie ustawiono jeszcze folderu zapisywania, wybierz domyślny teraz</string>
 <string name="feed_load_error">Błąd podczas ładowania kanału</string>
 <string name="metadata_privacy_unlisted">Niepubliczny</string>
-<string name="feed_use_dedicated_fetch_method_help_text_new">Czy wydaje ci się że ładowanie jest zbyt wolne\\? Jeśli tak, to spróbuj włączyć szybkie ładowanie (możesz to zmienić w ustawieniach lub wciskając poniższy przycisk). PipePipe oferuje dwie strategie ładowania: • Pobieranie całego subskrybowanego kanału, które jest wolne ale kompletne. • Pobieranie z dedykowanej usługi, która jest szybsza ale zwykle nie zawiera wszystkich informacji. Różnica pomiędzy nimi jest taka że w szybkiej zwykle brakuje niektórych informacji, takich jak długość elementu oraz typ (nie może rozróżnić transmisji na żywo i zwykłych filmów) i może zwracać mniej elementów.    YouTube jest przykładem usługi która oferuje szybką metodę za pomocą swojego kanału RSS.    Więc wybór zależy od tego co preferujesz: szybkość lub precyzyjne informacje.</string>
+<string name="feed_use_dedicated_fetch_method_help_text_new">Czy wydaje ci się że ładowanie jest zbyt wolne\\? Jeśli tak, to spróbuj włączyć szybkie ładowanie (możesz to zmienić w ustawieniach lub wciskając poniższy przycisk). SyncPipe oferuje dwie strategie ładowania: • Pobieranie całego subskrybowanego kanału, które jest wolne ale kompletne. • Pobieranie z dedykowanej usługi, która jest szybsza ale zwykle nie zawiera wszystkich informacji. Różnica pomiędzy nimi jest taka że w szybkiej zwykle brakuje niektórych informacji, takich jak długość elementu oraz typ (nie może rozróżnić transmisji na żywo i zwykłych filmów) i może zwracać mniej elementów.    YouTube jest przykładem usługi która oferuje szybką metodę za pomocą swojego kanału RSS.    Więc wybór zależy od tego co preferujesz: szybkość lub precyzyjne informacje.</string>
 <string name="feed_toggle_show_played_items">Pokaż obejrzane pozycje</string>
 <string name="off">Wyłączony</string>
 <string name="on">Włączony</string>
@@ -679,7 +679,7 @@
 <string name="error_report_channel_name">Powiadomienie raportu o błędach</string>
 <string name="error_report_channel_description">Powiadomienia do zgłaszania błędów</string>
 <string name="error_report_notification_title">NewPipe napotkał błąd. Naciśnij, aby zgłosić</string>
-<string name="error_report_notification_title_new">Wystąpił błąd w PipePipe, wciśnij aby go zgłosić</string>
+<string name="error_report_notification_title_new">Wystąpił błąd w SyncPipe, wciśnij aby go zgłosić</string>
 <string name="error_report_notification_toast">Wystąpił błąd, zobacz powiadomienie</string>
 <string name="show_error_snackbar">Pokaż snackbar z błędem</string>
 <string name="create_error_notification">Utwórz powiadomienie o błędzie</string>
@@ -724,7 +724,7 @@
 <string name="youtube_visitor_data_title">Dane odwiedzania YouTube</string>
 <string name="percent">Procent</string>
 <string name="large_grid">Duża siatka</string>
-<string name="app_update_unavailable_toast">Masz najnowszą wersję PipePipe.</string>
+<string name="app_update_unavailable_toast">Masz najnowszą wersję SyncPipe.</string>
 <string name="feed_fetch_channel_tabs">Pobieranie kart kanału</string>
 <string name="feed_fetch_channel_tabs_summary">Wybór kart do pobrania podczas uaktualniania kanału. Ta opcja nie ma wpływu na kanały uaktualnione za pomocą szybkiego trybu.</string>
 <string name="sponsor_block_category_sponsor">Sponsor</string>
@@ -808,9 +808,9 @@
 <string name="sponsor_block_manual_skip_button">Pomiń</string>
 <string name="sponsor_block_show_manual_skip_title">Pokaż ręczne przyciski</string>
 <string name="sponsor_block_show_manual_skip_summary">Pokaż przyciski na ekranie do ręcznego pomijania/ anulowania pomijania segmentów. Włączenie tego jest zalecane podczas konfigurowania kategorii SponsorBlock\'a do pomijania ręcznego.</string>
-<string name="soundcloud_go_plus_content_new">To jest utwór z SoundCloud Go+, przynajmniej w twoim kraju, więc nie można go strumieniować oraz pobierać w PipePipe.</string>
-<string name="private_content_new">Ta treść jest prywatna, więc nie może być odtwarzana ani pobierana przez PipePipe.</string>
-<string name="youtube_music_premium_content_new">Ten film jest dostępny tylko dla członków YouTube Music Premium, nie może być odtwarzany ani pobierany przez PipePipe.</string>
+<string name="soundcloud_go_plus_content_new">To jest utwór z SoundCloud Go+, przynajmniej w twoim kraju, więc nie można go strumieniować oraz pobierać w SyncPipe.</string>
+<string name="private_content_new">Ta treść jest prywatna, więc nie może być odtwarzana ani pobierana przez SyncPipe.</string>
+<string name="youtube_music_premium_content_new">Ten film jest dostępny tylko dla członków YouTube Music Premium, nie może być odtwarzany ani pobierany przez SyncPipe.</string>
 <string name="remove_duplicates">Usuń duplikaty</string>
 <string name="remove_duplicates_popup_title">Usunąć zduplikowane strumienie?</string>
 <string name="remove_duplicates_popup_warning">Zduplikowane strumienie w playliscie zostaną usunięte. Czy napewno chcesz to zrobić? Tego nie da się odwrócić!</string>
@@ -898,13 +898,13 @@
 <string name="filter_future_items_summary">Usuń elementy ustawione na późniejsze wydanie</string>
 <string name="pin_video_to_top_title">Przypnij film na górę</string>
 <string name="donation_dialog_title">Wesprzyj projekt</string>
-<string name="donation_dialog_message">Dziękujemy za używanie PipePipe! Jeżeli wydaje ci się ono użyteczne, pomyśl o zostaniu wspierającym na Ko-Fi. Twoje wsparcie jest dla mnie ważne i pomaga mi w dodawaniu nowych i ekscytujących funkcji. Wszystko się liczy! 😇</string>
+<string name="donation_dialog_message">Dziękujemy za używanie SyncPipe! Jeżeli wydaje ci się ono użyteczne, pomyśl o zostaniu wspierającym na Ko-Fi. Twoje wsparcie jest dla mnie ważne i pomaga mi w dodawaniu nowych i ekscytujących funkcji. Wszystko się liczy! 😇</string>
 <string name="fullscreen_gesture_control_summary">Używaj gestów do wchodzenia / wychodzenia z pełnego ekranu</string>
 <string name="fullscreen_gesture_control_title">Gest pełnego ekranu</string>
-<string name="require_audio_focus_summary">Upewnij się że tylko PipePipe odtwarza dźwięk</string>
+<string name="require_audio_focus_summary">Upewnij się że tylko SyncPipe odtwarza dźwięk</string>
 <string name="require_audio_focus_title">Wymagaj skuipienia audio</string>
 <string name="decoder_init_failure">Inicjalizacja dekoderów nieudana.</string>
-<string name="unable_to_decode_summary">Twoje urządzenie nie posiada wymaganych dekoderów sprzętowych, więc nie możesz odtwarzać tego wideo w PipePipe. Pobierz go i odtwórz go w VLC.</string>
+<string name="unable_to_decode_summary">Twoje urządzenie nie posiada wymaganych dekoderów sprzętowych, więc nie możesz odtwarzać tego wideo w SyncPipe. Pobierz go i odtwórz go w VLC.</string>
 <string name="settings_category_gestures_summary">Gesty</string>
 <string name="settings_category_bullet_comments_summary">Ustawienia przesuwających się komentarzy</string>
 <string name="settings_category_backup_title">Kopia zapasowa</string>
@@ -1074,7 +1074,7 @@
 <string name="import_soundcloud_subscriptions_title">Importuj z SoundCloud</string>
 <string name="import_soundcloud_subscriptions_summary">Importuj subskrypcje z profilu SoundCloud</string>
 <string name="clear_subscriptions_title">Wyczyść subskrypcje</string>
-<string name="clear_subscriptions_summary">Usuń wszystkie subskrybowane kanały z PipePipe</string>
+<string name="clear_subscriptions_summary">Usuń wszystkie subskrybowane kanały z SyncPipe</string>
 <string name="clear_subscriptions_confirmation">Wyczyścić wszystkie subskrypcje? Tego nie można cofnąć.</string>
 <string name="subscriptions_cleared">Wyczyszczono subskrypcje</string>
 <string name="fetch_subscription_details_title">Pobrać szczegóły kanału?</string>

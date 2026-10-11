@@ -6,8 +6,6 @@ import static org.schabi.newpipe.ktx.ViewUtils.animate;
 import static org.schabi.newpipe.player.Player.DEFAULT_CONTROLS_DURATION;
 import static org.schabi.newpipe.player.Player.DEFAULT_CONTROLS_HIDE_TIME;
 
-import java.util.Locale;
-
 import android.app.Activity;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -50,12 +48,6 @@ public class PlayerGestureListener
     private long swipeSeekTargetPosition = 0L;
     private boolean isChangingVolume = false;
     private boolean isChangingBrightness = false;
-    private boolean isChangingSpeed = false;
-    private float speedGestureStartSpeed = 1.0f;
-    private float accumulatedSpeedScroll = 0f;
-    private static final float SPEED_SWIPE_PIXELS_PER_STEP = 20f;
-    private static final float SPEED_MIN = 0.1f;
-    private static final float SPEED_MAX = 4.0f;
 
     private boolean isPendingScreenRotation = false;
     private boolean isFullscreenRotationGesture = false;
@@ -81,7 +73,8 @@ public class PlayerGestureListener
             player.hideControls(0, 0);
         }
 
-        if (portion == DisplayPortion.LEFT || portion == DisplayPortion.RIGHT) {
+        if ((portion == DisplayPortion.LEFT || portion == DisplayPortion.RIGHT)
+                && PlayerHelper.isDoubleTapSeekGestureEnabled(service)) {
             startMultiDoubleTap(event);
         } else if (portion == DisplayPortion.MIDDLE) {
             player.playPause();
@@ -139,11 +132,6 @@ public class PlayerGestureListener
                 return;
             }
 
-            if (isChangingSpeed) {
-                onScrollMainSpeed(distanceY);
-                return;
-            }
-
             // Decide the fullscreen toggle from the total travel since the touch went down,
             // not from the per-frame delta. Once the intent is latched it is sticky until the
             // finger goes up, exactly like the brightness/volume gestures on the sides.
@@ -180,14 +168,7 @@ public class PlayerGestureListener
                 return;
             }
 
-            final boolean isPlaybackSpeedGestureEnabled =
-                    PlayerHelper.isPlaybackSpeedGestureEnabled(service);
             final boolean isHorizontal = Math.abs(distanceX) > Math.abs(distanceY);
-            if (!isHorizontal && isPlaybackSpeedGestureEnabled && player.isFullscreen()
-                    && portion == DisplayPortion.MIDDLE) {
-                onScrollMainSpeed(distanceY);
-                return;
-            }
 
             // Only treat the swipe as a horizontal seek when it is clearly flatter than vertical;
             // otherwise an only-slightly diagonal down-swipe in the middle third would lock the
@@ -314,31 +295,6 @@ public class PlayerGestureListener
         }
     }
 
-    private void onScrollMainSpeed(final float distanceY) {
-        if (!isChangingSpeed) {
-            isChangingSpeed = true;
-            accumulatedSpeedScroll = 0f;
-            speedGestureStartSpeed = player.getPlaybackSpeed();
-            animate(gestureController.getSwipeSpeedDisplay(), true, DEFAULT_CONTROLS_DURATION, SCALE_AND_ALPHA);
-            if (gestureController.getVolumeRelativeLayout().getVisibility() == View.VISIBLE) {
-                animate(gestureController.getVolumeRelativeLayout(), false, 200, SCALE_AND_ALPHA);
-                isChangingVolume = false;
-            }
-            if (gestureController.getBrightnessRelativeLayout().getVisibility() == View.VISIBLE) {
-                animate(gestureController.getBrightnessRelativeLayout(), false, 200, SCALE_AND_ALPHA);
-                isChangingBrightness = false;
-            }
-        }
-
-        accumulatedSpeedScroll += distanceY; // positive = swipe up = faster
-        final float rawSpeed = speedGestureStartSpeed
-                + (accumulatedSpeedScroll / SPEED_SWIPE_PIXELS_PER_STEP) * 0.1f;
-        final float speed = Math.max(SPEED_MIN, Math.min(SPEED_MAX,
-                Math.round(rawSpeed * 10) / 10.0f));
-        player.setPlaybackSpeed(speed);
-        gestureController.getSwipeSpeedDisplay().setText(String.format(Locale.getDefault(), "%.1fx", speed));
-    }
-
     private void onScrollMainSeek(final float distanceX) {
         // The first swipe determines the active overlay; once seeking is engaged
         // we hide volume and brightness controls so mixed movements do not trigger them.
@@ -408,10 +364,6 @@ public class PlayerGestureListener
                 animate(gestureController.getSwipeSeekDisplay(), false, 200, SCALE_AND_ALPHA);
                 isSwipeSeeking = false;
             }
-            if (isChangingSpeed) {
-                animate(gestureController.getSwipeSpeedDisplay(), false, 200, SCALE_AND_ALPHA, 200);
-                isChangingSpeed = false;
-            }
             if (gestureController.getVolumeRelativeLayout().getVisibility() == View.VISIBLE) {
                 animate(gestureController.getVolumeRelativeLayout(), false, 200, SCALE_AND_ALPHA,
                         200);
@@ -442,12 +394,10 @@ public class PlayerGestureListener
         player.hideControls(0, 0);
         animate(gestureController.getFastSeekOverlay(), false, 0);
         animate(gestureController.getSwipeSeekDisplay(), false, 0, ALPHA, 0);
-        animate(gestureController.getSwipeSpeedDisplay(), false, 0, ALPHA, 0);
         animate(gestureController.getVolumeRelativeLayout(), false, 0, ALPHA, 0);
         animate(gestureController.getBrightnessRelativeLayout(), false, 0, ALPHA, 0);
         isChangingVolume = false;
         isChangingBrightness = false;
-        isChangingSpeed = false;
     }
 
     @Override

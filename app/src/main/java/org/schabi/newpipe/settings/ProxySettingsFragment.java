@@ -1,8 +1,6 @@
 package org.schabi.newpipe.settings;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
@@ -68,14 +66,6 @@ public class ProxySettingsFragment extends BasePreferenceFragment{
                     } catch (Exception e) {
                         Toast.makeText(requireContext(), R.string.network_error, Toast.LENGTH_SHORT).show();
                     }
-                    return true;
-                });
-
-        findPreference(getString(R.string.donation_encouragement_key))
-                .setOnPreferenceClickListener(preference -> {
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(getString(R.string.donation_url)));
-                    preference.getContext().startActivity(intent);
                     return true;
                 });
     }

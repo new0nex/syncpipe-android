@@ -64,7 +64,7 @@
     <string name="msg_name">Fájlnév</string>
     <string name="msg_threads">Szálak</string>
     <string name="msg_error">Hiba</string>
-    <string name="msg_running">PipePipe letöltés folyamatban</string>
+    <string name="msg_running">SyncPipe letöltés folyamatban</string>
     <string name="msg_running_detail">Koppintson a részletekért</string>
     <string name="msg_wait">Kis türelmet…</string>
     <string name="msg_copied">Vágólapra másolva</string>
@@ -102,8 +102,8 @@
     <string name="play_all">Összes lejátszása</string>
     <string name="always">Mindig</string>
     <string name="just_once">Csak egyszer</string>
-    <string name="notification_channel_name">PipePipe értesítés</string>
-    <string name="notification_channel_description">Értesítések a PipePipe lejátszójához</string>
+    <string name="notification_channel_name">SyncPipe értesítés</string>
+    <string name="notification_channel_description">Értesítések a SyncPipe lejátszójához</string>
     <string name="unknown_content">[Ismeretlen]</string>
     <string name="import_data_title">Adatbázis importálása</string>
     <string name="export_data_title">Adatbázis exportálása</string>
@@ -183,20 +183,20 @@
     <string name="charset_letters_and_digits">Betűk és számok</string>
     <string name="charset_most_special_characters">Legtöbb speciális karakter</string>
     <string name="toast_no_player">Nincs a fájl lejátszásához szükséges alkalmazás telepítve</string>
-    <string name="title_activity_about">A PipePipe névjegye</string>
+    <string name="title_activity_about">A SyncPipe névjegye</string>
     <string name="tab_about">Névjegy</string>
     <string name="app_description">Szabad, egyszerű közvetítésnézés Androidon.</string>
     <string name="contribution_title">Közreműködés</string>
     <string name="contribution_encouragement">Legyen ötleted a fordítással, a dizájnnal, a forráskód tisztításával vagy egy komolyabb átszervezésével kapcsolatban, bármilyen segítséget szívesen fogadunk. Minél több minden készül el, annál jobb lesz!</string>
     <string name="view_on_github">Megtekintés a GitHubon</string>
     <string name="donation_title">Adományozás</string>
-    <string name="donation_encouragement">A PipePipe alkalmazást önkéntesek fejlesztik a szabadidejükben, hogy a lehető legjobb felhasználói élményt nyújtsák. Járuljon hozzá, hogy a fejlesztők még jobbá tegyék alkalmazást, miközben egy csésze kávét szürcsölnek.</string>
+    <string name="donation_encouragement">A SyncPipe alkalmazást önkéntesek fejlesztik a szabadidejükben, hogy a lehető legjobb felhasználói élményt nyújtsák. Járuljon hozzá, hogy a fejlesztők még jobbá tegyék alkalmazást, miközben egy csésze kávét szürcsölnek.</string>
     <string name="website_title">Honlap</string>
-    <string name="website_encouragement">Látogassa meg a PipePipe honlapját a további információkért és hírekért.</string>
-    <string name="privacy_policy_title">A PipePipe adatvédelmi irányelvei</string>
-    <string name="privacy_policy_encouragement">A PipePipe projekt komolyan veszi az adatvédelmét. Az alkalmazás nem gyűjt semmilyen adatot a beleegyezése nélkül.
-\nA PipePipe adatvédelmi irányelve részletesen elmagyarázza, mely adatok kerülnek elküldésre és tárolásra az alkalmazás összeomlásának jelentésekor.</string>
-    <string name="app_license_title">A PipePipe licence</string>
+    <string name="website_encouragement">Látogassa meg a SyncPipe honlapját a további információkért és hírekért.</string>
+    <string name="privacy_policy_title">A SyncPipe adatvédelmi irányelvei</string>
+    <string name="privacy_policy_encouragement">A SyncPipe projekt komolyan veszi az adatvédelmét. Az alkalmazás nem gyűjt semmilyen adatot a beleegyezése nélkül.
+\nA SyncPipe adatvédelmi irányelve részletesen elmagyarázza, mely adatok kerülnek elküldésre és tárolásra az alkalmazás összeomlásának jelentésekor.</string>
+    <string name="app_license_title">A SyncPipe licence</string>
     <string name="read_full_license">Licenc elolvasása</string>
     <string name="title_activity_history">Előzmények</string>
     <string name="action_history">Előzmények</string>
@@ -298,7 +298,7 @@
     <string name="seek_duration_title">Az előre- és visszatekerés időtartama</string>
     <string name="enable_playback_resume_summary">Utolsó lejátszási pozíció visszaállítása</string>
     <string name="enable_playback_resume_title">Lejátszás folytatása</string>
-    <string name="app_update_notification_channel_description">Értesítések az új PipePipe verziókról</string>
+    <string name="app_update_notification_channel_description">Értesítések az új SyncPipe verziókról</string>
     <string name="app_update_notification_channel_name">Alkalmazásfrissítés értesítése</string>
     <string name="file_deleted">Fájl törölve</string>
     <string name="settings_category_updates_title">Frissítések</string>
@@ -328,7 +328,7 @@
     <string name="error_timeout">Kapcsolati időtúllépés</string>
     <string name="error_progress_lost">Az előrehaladás elveszett, mert a fájlt törölték</string>
     <string name="error_insufficient_storage">Nincs elegendő tárhely az eszközön</string>
-    <string name="error_postprocessing_stopped">A PipePipe leállt a fájl feldolgozása közben</string>
+    <string name="error_postprocessing_stopped">A SyncPipe leállt a fájl feldolgozása közben</string>
     <string name="error_postprocessing_failed">Utófeldolgozás sikertelen</string>
     <string name="error_http_not_found">Nincs talalat</string>
     <string name="error_http_unsupported_range">A kiszolgáló nem fogad többszálú letöltést, próbálkozzon újra ezzel: @string/msg_threads = 1</string>
@@ -353,7 +353,7 @@
     <string name="missions_header_pending">Függőben</string>
     <string name="missions_header_finished">Befejezett</string>
     <string name="app_update_notification_content_text">Kattintson a letöltéshez</string>
-    <string name="app_update_notification_content_title">PipePipe frissítés érhető el!</string>
+    <string name="app_update_notification_content_title">SyncPipe frissítés érhető el!</string>
     <string name="auto">Automatikus</string>
     <string name="grid">Rács</string>
     <string name="list">Lista</string>
@@ -377,7 +377,7 @@
     <string name="auto_queue_toggle">Automatikus sorba állítás</string>
     <string name="restore_defaults_confirmation">Visszaállítja az alapértelmezéseket\?</string>
     <string name="restricted_video_no_stream">Ez a videó korhatáros.
-\nAz új, korhatáros videókkal kapcsolatos YouTube irányelvek miatt a PipePipe nem férhet hozzá a videóhoz, így nem tudja lejátszani.</string>
+\nAz új, korhatáros videókkal kapcsolatos YouTube irányelvek miatt a SyncPipe nem férhet hozzá a videóhoz, így nem tudja lejátszani.</string>
     <string name="description_tab_description">Leírás</string>
     <string name="comments_tab_description">Megjegyzések</string>
     <string name="copy_for_github">Formázott jelentés másolása</string>
@@ -398,7 +398,7 @@
     <string name="recently_added">Nemrég hozzáadott</string>
     <string name="feed_groups_header_title">Csatornacsoportok</string>
     <string name="systems_language">Rendszer alapértelmezése</string>
-    <string name="start_accept_privacy_policy">Az Általános adatvédelmi rendeletnek (GDPR) való megfelelés érdekében felhívjuk figyelmét a PipePipe adatvédelmi nyilatkozatára. Olvassa el figyelmesen.
+    <string name="start_accept_privacy_policy">Az Általános adatvédelmi rendeletnek (GDPR) való megfelelés érdekében felhívjuk figyelmét a SyncPipe adatvédelmi nyilatkozatára. Olvassa el figyelmesen.
 \nEl kell fogadnia, ha hibajelentést szeretne küldeni.</string>
     <string name="crash_the_app">Alkalmazás összeomlasztása</string>
     <string name="show_memory_leaks">Memóriaszivárgások megjelenítése</string>
@@ -440,7 +440,7 @@
     <string name="error_report_open_issue_button_text">Jelentés a GitHubon</string>
     <string name="restore_defaults">Alapértelmezések visszaállítása</string>
     <string name="help">Súgó</string>
-    <string name="clear_cookie_summary">Sütik törlése, amelyeket a PipePipe akkor ment, amikor megold egy reCAPTCHAt</string>
+    <string name="clear_cookie_summary">Sütik törlése, amelyeket a SyncPipe akkor ment, amikor megold egy reCAPTCHAt</string>
     <string name="recaptcha_cookies_cleared">reCAPTCHA sütik törölve</string>
     <string name="clear_cookie_title">reCAPTCHA sütik törlése</string>
     <string name="artists">Előadók</string>
@@ -487,15 +487,15 @@
         <item quantity="other">%d kiválasztva</item>
     </plurals>
     <string name="feed_create_new_group_button_title">Új</string>
-    <string name="content_not_supported">Ezt a tartalmat még nem támogatja a PipePipe.
+    <string name="content_not_supported">Ezt a tartalmat még nem támogatja a SyncPipe.
 \n
 \nRemélhetőleg egy következő verzióban már támogatott lesz.</string>
     <string name="no_app_to_open_intent">Nincs a készülékén olyan alkalmazás, amely meg tudja ezt nyitni</string>
-    <string name="youtube_music_premium_content">Ez a videó csak YouTube Music Prémium előfizetők számára érhető el, így nem tekinthető meg és nem tölthető le a PipePipe-pal.</string>
+    <string name="youtube_music_premium_content">Ez a videó csak YouTube Music Prémium előfizetők számára érhető el, így nem tekinthető meg és nem tölthető le a SyncPipe-pal.</string>
     <string name="auto_device_theme_title">Automatikus (rendszertéma)</string>
-    <string name="paid_content">Ez a tartalom csak előfizetőknek érhető el, nem tekinthető meg és nem tölthető le a PipePipe-pal.</string>
+    <string name="paid_content">Ez a tartalom csak előfizetőknek érhető el, nem tekinthető meg és nem tölthető le a SyncPipe-pal.</string>
     <string name="georestricted_content">Ez a tartalom nem érhető el az országában.</string>
-    <string name="private_content">Ez a tartalom privát, így nem tekinthető meg és nem tölthető le a PipePipe-pal.</string>
+    <string name="private_content">Ez a tartalom privát, így nem tekinthető meg és nem tölthető le a SyncPipe-pal.</string>
     <string name="download_has_started">A letöltés elkezdődött</string>
     <string name="notification_scale_to_square_image_summary">Értesítésben megjelenő bélyegkép átméretezése 16:9-es helyett 1:1-es arányra (torzítással járhat)</string>
     <string name="chapters">Fejezetek</string>
@@ -521,7 +521,7 @@
     <string name="show_channel_details">Csatorna részleteinek megjelenítése</string>
     <string name="hold_to_append">Tartsa nyomva a sorba állításhoz</string>
     <string name="default_kiosk_page_summary">Alapértelmezett újságárus</string>
-    <string name="app_license">A PipePipe egy szabad szoftver: tetszése szerint felhasználhatja, tanulmányozhatja, megoszthatja és fejlesztheti. Egész pontosan a Free Software Foundation által kiadott GNU General Public License 3-as, vagy (választható módon) újabb verziójának feltételei szerint módosíthatja vagy adhatja tovább.</string>
+    <string name="app_license">A SyncPipe egy szabad szoftver: tetszése szerint felhasználhatja, tanulmányozhatja, megoszthatja és fejlesztheti. Egész pontosan a Free Software Foundation által kiadott GNU General Public License 3-as, vagy (választható módon) újabb verziójának feltételei szerint módosíthatja vagy adhatja tovább.</string>
     <string name="recaptcha_solve">Megoldás</string>
     <string name="subtitle_activity_recaptcha">Nyomja meg a „Kész” gombot, ha megoldotta</string>
     <string name="msg_calculating_hash">Ujjlenyomat számítása</string>
@@ -553,14 +553,14 @@
     <string name="feed_update_threshold_title">Lista frissítési küszöb</string>
     <string name="feed_update_threshold_summary">A legutóbbi frissítés óta eltelt idő, ami után a feliratkozás elavultnak számít – %s</string>
     <string name="feed_load_error_terminated">A szerző fiókját eltávolították.
-\nA PipePipe nem fogja tudni betölteni ezt a listát a jövőben.
+\nA SyncPipe nem fogja tudni betölteni ezt a listát a jövőben.
 \nLeiratkozik erről a csatornáról\?</string>
     <string name="feed_load_error_fast_unknown">A gyors listamód nem ad ennél több információt.</string>
     <string name="feed_use_dedicated_fetch_method_title">Lekérés egy dedikált listából, ha lehetséges</string>
     <string name="feed_use_dedicated_fetch_method_enable_button">Gyors mód engedélyezése</string>
     <string name="feed_use_dedicated_fetch_method_help_text">Úgy gondolja, hogy a lista betöltése lassú\? Ha így van, akkor próbálja engedélyezni a gyors betöltést (ezt a beállításokban változtathatja meg, vagy a lenti gomb megnyomásával).
 \n
-\nA PipePipe két listabetöltési stratégiát kínál:
+\nA SyncPipe két listabetöltési stratégiát kínál:
 \n• A teljes feliratkozott csatorna lekérése, amely lassú, de teljes.
 \n• Egy dedikált szolgáltatási végpont, amely gyors, de általában nem teljes.
 \n
@@ -605,11 +605,11 @@
     <string name="detail_heart_img_view_description">Készítő által szívecskézve</string>
     <string name="on">Be</string>
     <string name="feed_load_error_account_info">A(z) „%s” listája nem tölthető be.</string>
-    <string name="soundcloud_go_plus_content">Ez egy SoundCloud Go+ szám, legalábbis az Ön országában, így nem játszható le vagy tölthető le a PipePipe-pal.</string>
+    <string name="soundcloud_go_plus_content">Ez egy SoundCloud Go+ szám, legalábbis az Ön országában, így nem játszható le vagy tölthető le a SyncPipe-pal.</string>
     <string name="show_meta_info_summary">Kapcsolja ki, hogy elrejtse a metainformációs dobozokat, melyek további információkat tartalmaznak a közvetítés létrehozójáról, annak tartalmáról vagy egy keresési kérésről</string>
     <string name="error_report_channel_name">Hibajelentési értesítés</string>
     <string name="error_report_channel_description">Értesítések a hibák jelentéséhez</string>
-    <string name="error_report_notification_title">A PipePipe hibát észlelt, koppintson a jelentéséhez</string>
+    <string name="error_report_notification_title">A SyncPipe hibát észlelt, koppintson a jelentéséhez</string>
     <string name="error_report_notification_toast">Hiba történt, tekintse meg az értesítést</string>
     <string name="disable_media_tunneling_title">Médiacsatornázás letiltása</string>
     <string name="show_error_snackbar">Hiba üzenetsávjának megjelenítése</string>

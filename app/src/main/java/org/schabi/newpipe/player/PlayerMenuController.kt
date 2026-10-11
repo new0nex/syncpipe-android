@@ -128,6 +128,11 @@ class PlayerMenuController(
             Log.d(TAG, "onPlaybackSpeedClicked() called")
         }
 
+        if (!PlayerHelper.isPlaybackSpeedControlsShown(player.context)) {
+            player.manageControlsAfterOnClick(v)
+            return
+        }
+
         if (player.videoPlayerSelected()) {
             PlaybackParameterDialog.newInstance(
                 player.playbackSpeed.toDouble(),
@@ -222,6 +227,11 @@ class PlayerMenuController(
 
     fun buildPlaybackSpeedMenu() {
         playbackSpeedPopupMenu.menu.removeGroup(POPUP_MENU_ID_PLAYBACK_SPEED)
+
+        if (!PlayerHelper.isPlaybackSpeedControlsShown(player.context)) {
+            player.binding.playbackSpeed.visibility = View.GONE
+            return
+        }
 
         for (i in PLAYBACK_SPEEDS.indices) {
             playbackSpeedPopupMenu.menu.add(

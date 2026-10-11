@@ -66,13 +66,20 @@ class PlayerStartController(private val player: Player) {
         }
         player.trackSelector.setParameters(parametersBuilder)
 
-        val savedParameters = PlayerHelper.retrievePlaybackParametersFromPrefs(player)
+        val playbackSpeedControlsShown =
+            PlayerHelper.isPlaybackSpeedControlsShown(player.context)
+        val savedParameters = if (playbackSpeedControlsShown) {
+            PlayerHelper.retrievePlaybackParametersFromPrefs(player)
+        } else {
+            PlayerPlaybackParameters(1f, 1f)
+        }
         val playbackSpeed = savedParameters.speed
         val playbackPitch = savedParameters.pitch
-        val playbackSkipSilence = player.prefs.getBoolean(
-            player.context.getString(R.string.playback_skip_silence_key),
-            player.playbackSkipSilence,
-        )
+        val playbackSkipSilence = playbackSpeedControlsShown &&
+            player.prefs.getBoolean(
+                player.context.getString(R.string.playback_skip_silence_key),
+                player.playbackSkipSilence,
+            )
 
         val samePlayQueue = playQueue != null && playQueue == newQueue
         val repeatMode = RepeatShuffleController.fromExoPlayerRepeatMode(

@@ -356,9 +356,20 @@ public final class PlayerHelper {
                 .getBoolean(context.getString(R.string.swipe_seek_gesture_control_key), true);
     }
 
+    public static boolean isDoubleTapSeekGestureEnabled(@NonNull final Context context) {
+        return getPreferences(context)
+                .getBoolean(context.getString(R.string.double_tap_seek_gesture_control_key),
+                        false);
+    }
+
     public static boolean isPlaybackSpeedGestureEnabled(@NonNull final Context context) {
         return getPreferences(context)
                 .getBoolean(context.getString(R.string.playback_speed_gesture_control_key), false);
+    }
+
+    public static boolean isPlaybackSpeedControlsShown(@NonNull final Context context) {
+        return getPreferences(context)
+                .getBoolean(context.getString(R.string.show_playback_speed_controls_key), false);
     }
 
     /**

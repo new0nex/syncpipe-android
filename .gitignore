@@ -13,6 +13,16 @@ app/release/
 .kotlin/
 log/
 /local-pr-desc/
+doc/custom-roadmap.md
+*.apk
+*.aab
+*.jks
+*.keystore
+*.log
+*.db
+*.db-wal
+*.db-shm
+takeout-*.zip
 
 # vscode / eclipse files
 *.classpath

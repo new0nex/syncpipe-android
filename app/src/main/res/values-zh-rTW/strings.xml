@@ -105,8 +105,8 @@
 <string name="settings_category_player_title">播放器</string>
 <string name="settings_category_history_title">歷史記錄與快取</string>
 <string name="undo">復原</string>
-<string name="notification_channel_name">PipePipe 通知</string>
-<string name="notification_channel_description">PipePipe 播放器的通知</string>
+<string name="notification_channel_name">SyncPipe 通知</string>
+<string name="notification_channel_description">SyncPipe 播放器的通知</string>
 <string name="search_no_results">沒有結果</string>
 <string name="empty_subscription_feed_subtitle">這裡空空如也</string>
 <string name="no_subscribers">無訂閱者</string>
@@ -298,7 +298,7 @@
 <string name="settings_category_updates_title">更新</string>
 <string name="file_deleted">已刪除檔案</string>
 <string name="app_update_notification_channel_name">應用程式更新通知</string>
-<string name="app_update_notification_channel_description_new">新 PipePipe 版本通知</string>
+<string name="app_update_notification_channel_description_new">新 SyncPipe 版本通知</string>
 <string name="download_to_sdcard_error_title">無法使用外部儲存空間</string>
 <string name="download_to_sdcard_error_message">無法下載到外部 SD 卡。重設下載資料夾位置？</string>
 <string name="saved_tabs_invalid_json">無法讀取已儲存的分頁，因此使用預設分頁</string>
@@ -446,7 +446,7 @@
 <string name="feed_use_dedicated_fetch_method_disable_button">停用快速模式</string>
 <string name="feed_use_dedicated_fetch_method_help_text_new">您覺得 feed 載入太慢了嗎？如果是的話，試著啟用快速載入（您可以在設定中變更或按下下方的按鈕）。
 \n
-\nPipePipe 提供兩個 feed 載入策略：
+\nSyncPipe 提供兩個 feed 載入策略：
 \n• 擷取整個訂閱頻道，慢但是完整。
 \n• 使用專用的伺服器端點，較快速但是通常不完整。
 \n
@@ -502,7 +502,7 @@
 <string name="show_memory_leaks">顯示記憶體洩漏</string>
 <string name="enqueued">已加入佇列</string>
 <string name="enqueue_stream">加入佇列</string>
-<string name="clear_cookie_summary_new">清除 PipePipe 在您解決 reCAPTCHA 時儲存的 cookie</string>
+<string name="clear_cookie_summary_new">清除 SyncPipe 在您解決 reCAPTCHA 時儲存的 cookie</string>
 <string name="recaptcha_cookies_cleared">reCAPTCHA cookies 已被清除</string>
 <string name="clear_cookie_title">清除 reCAPTCHA cookies</string>
 <string name="notification_colorize_summary">讓 Android 根據縮圖中的主色調自訂通知色彩（請注意，這項功能並非所有裝置皆正常運作）</string>
@@ -522,8 +522,8 @@
 <string name="open_with">以……開啟</string>
 <string name="no_app_to_open_intent">您的裝置上沒有支援開啟的應用程式</string>
 <string name="crash_the_app">使應用程式崩潰</string>
-<string name="youtube_music_premium_content_new">這部影片僅供 YouTube Music Premium 會員使用，因此無法由 PipePipe 串流或下載。</string>
-<string name="soundcloud_go_plus_content_new">這是 SoundCloud Go+ 的曲目，因此至少在您的國家無法由 PipePipe 串流或下載。</string>
+<string name="youtube_music_premium_content_new">這部影片僅供 YouTube Music Premium 會員使用，因此無法由 SyncPipe 串流或下載。</string>
+<string name="soundcloud_go_plus_content_new">這是 SoundCloud Go+ 的曲目，因此至少在您的國家無法由 SyncPipe 串流或下載。</string>
 <string name="georestricted_content">這個內容無法在您的國家使用。</string>
 <string name="restricted_video_no_stream_new">這部影片受到年齡限制。\n如要觀看，請前往設定登入。</string>
 <string name="radio">廣播</string>
@@ -558,7 +558,7 @@
 <string name="account_terminated">帳號已終止</string>
 <string name="feed_load_error_fast_unknown">快速 feed 模式不會提供更多資訊。</string>
 <string name="feed_load_error_terminated_new">作者帳號已被停權。
-\nPipePipe 未來將無法載入這個 feed。
+\nSyncPipe 未來將無法載入這個 feed。
 \n您要取消訂閱這個頻道嗎？</string>
 <string name="feed_load_error_account_info">無法載入「%s」。</string>
 <string name="feed_load_error">載入 feed 時發生錯誤</string>
@@ -672,10 +672,10 @@
 <string name="settings_category_sponsor_block_category_preview_summary">快速回顧前集內容，或者預告當前影片的內容。適用於編輯好的片段，不適用於口頭摘要。</string>
 <string name="settings_category_sponsor_block_category_filler_summary">僅用於填充或幽默的次要場景，不影響主要內容的理解。</string>
 <string name="invalid_color_toast">無效的顏色</string>
-<string name="error_report_notification_title_new">PipePipe 遇到錯誤，點擊報告</string>
+<string name="error_report_notification_title_new">SyncPipe 遇到錯誤，點擊報告</string>
 <string name="error_report_open_issue_button_text_new">在 GitHub 上報告</string>
-<string name="msg_running_new">PipePipe 下載中</string>
-<string name="title_activity_about_new">關於 PipePipe</string>
+<string name="msg_running_new">SyncPipe 下載中</string>
+<string name="title_activity_about_new">關於 SyncPipe</string>
 <string name="app_license_title_new">NewPipe 的許可證（上游）</string>
 <string name="duplicate_in_playlist">已灰掉的播放清單已包含此項目。</string>
 <string name="playlist_add_stream_success_duplicate">重複新增 %d 次</string>
@@ -683,9 +683,9 @@
 <string name="youtube_visitor_data_summary">在所有 YouTube 桌面請求上發送訪客數據 cookie。可用於重現 A/B 測試。</string>
 <string name="percent">百分比</string>
 <string name="semitone">半音</string>
-<string name="app_update_unavailable_toast">您正在運行 PipePipe 的最新版本</string>
-<string name="app_update_notification_content_title_new">PipePipe 有更新可用！</string>
-<string name="error_postprocessing_stopped_new">PipePipe 在處理文件時關閉</string>
+<string name="app_update_unavailable_toast">您正在運行 SyncPipe 的最新版本</string>
+<string name="app_update_notification_content_title_new">SyncPipe 有更新可用！</string>
+<string name="error_postprocessing_stopped_new">SyncPipe 在處理文件時關閉</string>
 <string name="sponsor_block">SponsorBlock</string>
 <string name="sponsor_block_home_page_title">查看網站</string>
 <string name="sponsor_block_home_page_summary">查看官方 SponsorBlock 網站。</string>
@@ -707,10 +707,10 @@
 <string name="sponsor_block_skip_preview_toast">已跳過預告 / 回顧</string>
 <string name="sponsor_block_skip_filler_toast">已跳過填充 / 笑話</string>
 <string name="sponsor_block_confirm_reset_colors">您確定要重設分類顏色嗎？</string>
-<string name="content_not_supported_new">PipePipe 尚不支援此內容。\n\n希望未來版本能支援此內容。</string>
-<string name="private_content_new">此內容為私人內容，因此無法透過 PipePipe 進行串流或下載。</string>
+<string name="content_not_supported_new">SyncPipe 尚不支援此內容。\n\n希望未來版本能支援此內容。</string>
+<string name="private_content_new">此內容為私人內容，因此無法透過 SyncPipe 進行串流或下載。</string>
 <string name="live_not_started">直播尚未開始。</string>
-<string name="paid_content_new">此內容僅適用於付費用戶，因此無法透過 PipePipe 進行串流或下載。</string>
+<string name="paid_content_new">此內容僅適用於付費用戶，因此無法透過 SyncPipe 進行串流或下載。</string>
 <string name="metadata_subscribers">訂閱者</string>
 <string name="remove_duplicates">移除重複項目</string>
 <string name="remove_duplicates_popup_title">移除重複串流？</string>
@@ -807,13 +807,13 @@
 <string name="speeding_playback_title">按住以加速播放</string>
 <string name="view_on_github">在 GitHub 上查看</string>
 <string name="donation_dialog_title">支持這項計畫</string>
-<string name="donation_dialog_message">感謝您使用 PipePipe！如果您覺得它有用，請考慮在 Ko-Fi 上成為支持者。您的支持對我來說很重要，並幫助我加入更多令人興奮的新功能。每一分都很重要！😇</string>
+<string name="donation_dialog_message">感謝您使用 SyncPipe！如果您覺得它有用，請考慮在 Ko-Fi 上成為支持者。您的支持對我來說很重要，並幫助我加入更多令人興奮的新功能。每一分都很重要！😇</string>
 <string name="fullscreen_gesture_control_summary">使用手勢進入 / 退出全螢幕</string>
 <string name="fullscreen_gesture_control_title">全螢幕手勢控制</string>
-<string name="require_audio_focus_summary">確保只有 PipePipe 在播放音訊</string>
+<string name="require_audio_focus_summary">確保只有 SyncPipe 在播放音訊</string>
 <string name="require_audio_focus_title">需要音訊焦點</string>
 <string name="decoder_init_failure">解碼器初始化失敗</string>
-<string name="unable_to_decode_summary">您的裝置缺少所需的硬體解碼器，因此您無法在 PipePipe 播放這部影片。 \n請下載並透過 VLC 播放。</string>
+<string name="unable_to_decode_summary">您的裝置缺少所需的硬體解碼器，因此您無法在 SyncPipe 播放這部影片。 \n請下載並透過 VLC 播放。</string>
 <string name="settings_category_gestures_summary">手勢設定</string>
 <string name="settings_category_bullet_comments_summary">彈幕設定</string>
 <string name="settings_category_backup_title">備份</string>
@@ -1048,7 +1048,7 @@
 <string name="import_soundcloud_subscriptions_title">從 SoundCloud 匯入</string>
 <string name="import_soundcloud_subscriptions_summary">從 SoundCloud 個人檔案匯入訂閱</string>
 <string name="clear_subscriptions_title">清除訂閱</string>
-<string name="clear_subscriptions_summary">從 PipePipe 移除所有已訂閱的頻道</string>
+<string name="clear_subscriptions_summary">從 SyncPipe 移除所有已訂閱的頻道</string>
 <string name="clear_subscriptions_confirmation">清除所有訂閱？此操作無法復原。</string>
 <string name="subscriptions_cleared">訂閱已清除</string>
 <string name="fetch_subscription_details_title">擷取頻道詳細資訊？</string>

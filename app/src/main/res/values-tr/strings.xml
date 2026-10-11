@@ -163,10 +163,10 @@
 <string name="just_once">Yalnızca bir defa</string>
 <string name="file">Dosya</string>
 <string name="notifications">Bildirimler</string>
-<string name="notification_channel_name">PipePipe bildirimi</string>
-<string name="notification_channel_description">PipePipe oynatıcısı için bildirimler</string>
+<string name="notification_channel_name">SyncPipe bildirimi</string>
+<string name="notification_channel_description">SyncPipe oynatıcısı için bildirimler</string>
 <string name="app_update_notification_channel_name">Uygulama güncelleme bildirimi</string>
-<string name="app_update_notification_channel_description_new">Yeni PipePipe sürümleri için bildirimler</string>
+<string name="app_update_notification_channel_description_new">Yeni SyncPipe sürümleri için bildirimler</string>
 <string name="hash_channel_name">Video hash bildirimi</string>
 <string name="hash_channel_description">Video hash ilerlemesi için bildirimler</string>
 <string name="streams_notification_channel_name">Yeni akışlar</string>
@@ -183,7 +183,7 @@
 <string name="recaptcha_cookies_cleared">reCAPTCHA çerezleri temizlendi</string>
 <string name="import_data_summary">Mevcut geçmişinizi, aboneliklerinizi, çalma listelerinizi ve (isteğe bağlı olarak) ayarlarınızı geçersiz kılar</string>
 <string name="export_data_summary">Geçmişi, abonelikleri, çalma listelerini ve ayarları dışa aktar</string>
-<string name="clear_cookie_summary_new">Bir reCAPTCHA çözdüğünüzde PipePipe\'ın sakladığı çerezleri temizleyin</string>
+<string name="clear_cookie_summary_new">Bir reCAPTCHA çözdüğünüzde SyncPipe\'ın sakladığı çerezleri temizleyin</string>
 <string name="clear_views_history_title">İzleme geçmişini temizle</string>
 <string name="clear_views_history_summary">Oynatılan akışların geçmişini ve oynatma konumlarını siler</string>
 <string name="delete_view_history_alert">Tüm izleme geçmişi silinsin mi?</string>
@@ -226,7 +226,7 @@
 <string name="restore_defaults_confirmation">Varsayılanları geri yüklemek istiyor musunuz?</string>
 <string name="permission_display_over_apps">Diğer uygulamaların üzerinde gösterme izni verin</string>
 <!-- error activity -->
-<string name="error_report_notification_title_new">PipePipe bir hatayla karşılaştı, bildirmek için dokunun</string>
+<string name="error_report_notification_title_new">SyncPipe bir hatayla karşılaştı, bildirmek için dokunun</string>
 <string name="error_report_notification_toast">Bir hata oluştu, bildirime bakın</string>
 <string name="sorry_string">Üzgünüz, bu olmamalıydı.</string>
 <string name="error_report_button_text">Bu hatayı e-posta ile bildir</string>
@@ -305,7 +305,7 @@
 <string name="msg_name">Dosya adı</string>
 <string name="msg_threads">İş Parçacıkları</string>
 <string name="msg_error">Hata</string>
-<string name="msg_running_new">PipePipe İndiriyor</string>
+<string name="msg_running_new">SyncPipe İndiriyor</string>
 <string name="msg_running_detail">Ayrıntılar için dokunun</string>
 <string name="msg_calculating_hash">Hash hesaplanıyor</string>
 <string name="msg_wait">Lütfen bekleyin…</string>
@@ -327,7 +327,7 @@
 <string name="charset_most_special_characters">Çoğu özel karakter</string>
 <string name="toast_no_player">Bu dosyayı oynatmak için yüklü bir uygulama yok</string>
 <!-- About -->
-<string name="title_activity_about_new">PipePipe Hakkında</string>
+<string name="title_activity_about_new">SyncPipe Hakkında</string>
 <string name="title_licenses">Üçüncü Taraf Lisansları</string>
 <string name="copyright">© %1$s %2$s tarafından %3$s altında</string>
 <string name="tab_about">Hakkında</string>
@@ -525,8 +525,8 @@
 <string name="low_quality_smaller">Düşük kalite (daha küçük)</string>
 <string name="dont_show">Gösterme</string>
 <!-- App update notification -->
-<string name="app_update_unavailable_toast">PipePipe\'ın en son sürümünü kullanıyorsunuz</string>
-<string name="app_update_notification_content_title_new">PipePipe güncellemesi mevcut!</string>
+<string name="app_update_unavailable_toast">SyncPipe\'ın en son sürümünü kullanıyorsunuz</string>
+<string name="app_update_notification_content_title_new">SyncPipe güncellemesi mevcut!</string>
 <string name="app_update_notification_content_text">İndirmek için dokunun</string>
 <string name="missions_header_finished">Bitti</string>
 <string name="missions_header_pending">Bekliyor</string>
@@ -562,7 +562,7 @@
 <string name="error_http_unsupported_range">Sunucu çok iş parçacıklı indirmeleri kabul etmiyor, @string/msg_threads = 1 ile tekrar deneyin</string>
 <string name="error_http_not_found">Bulunamadı</string>
 <string name="error_postprocessing_failed">İşlem sonrası başarısız oldu</string>
-<string name="error_postprocessing_stopped_new">Dosya üzerinde çalışılırken PipePipe kapatıldı</string>
+<string name="error_postprocessing_stopped_new">Dosya üzerinde çalışılırken SyncPipe kapatıldı</string>
 <string name="error_insufficient_storage">Cihazda boş alan kalmadı</string>
 <string name="error_progress_lost">İlerleme kaybedildi, çünkü dosya silindi</string>
 <string name="error_timeout">Bağlantı zaman aşımı</string>
@@ -639,7 +639,7 @@
 <string name="feed_update_threshold_option_always_update">Her zaman güncelle</string>
 <string name="feed_load_error">Akış yükleme hatası</string>
 <string name="feed_load_error_account_info">\'%s\' için akış yüklenemedi.</string>
-<string name="feed_load_error_terminated_new">Yazarın hesabı kapatıldı.\nPipePipe gelecekte bu akışı yükleyemeyecek.\nBu kanalın aboneliğinden çıkmak istiyor musunuz?</string>
+<string name="feed_load_error_terminated_new">Yazarın hesabı kapatıldı.\nSyncPipe gelecekte bu akışı yükleyemeyecek.\nBu kanalın aboneliğinden çıkmak istiyor musunuz?</string>
 <string name="feed_load_error_fast_unknown">Hızlı akış modu bu konuda daha fazla bilgi sağlamıyor.</string>
 <string name="feed_use_dedicated_fetch_method_title">Mevcut olduğunda özel akıştan getir</string>
 <string name="feed_use_dedicated_fetch_method_summary">Bazı hizmetlerde mevcuttur, genellikle çok daha hızlıdır ancak sınırlı miktarda öğe döndürebilir ve genellikle eksik bilgi (ör. süre yok, öğe türü yok, canlı durumu yok) içerebilir</string>
@@ -647,7 +647,7 @@
 <string name="feed_use_dedicated_fetch_method_disable_button">Hızlı modu devre dışı bırak</string>
 <string name="feed_use_dedicated_fetch_method_help_text_new">Akış yüklemenin çok yavaş olduğunu mu düşünüyorsunuz\? Öyleyse, hızlı yüklemeyi etkinleştirmeyi deneyin (ayarlardan veya aşağıdaki düğmeye basarak değiştirebilirsiniz).
 \n
-\nPipePipe iki akış yükleme stratejisi sunar:
+\nSyncPipe iki akış yükleme stratejisi sunar:
 \n• Abonelik kanalının tamamını getirmek, ki bu yavaştır ama eksiksizdir.
 \n• Özel bir hizmet uç noktası kullanmak, ki bu hızlıdır ancak genellikle eksiksiz değildir.
 \n
@@ -741,7 +741,7 @@
 <string name="sponsor_block_manual_skip_button">Atla</string>
 <string name="sponsor_block_show_manual_skip_title">Manuel düğmeleri göster</string>
 <string name="sponsor_block_show_manual_skip_summary">Bölümleri manuel olarak atlamak/geri almak için ekranda düğmeleri göster. SponsorBlock Kategorilerini manuel olarak atlanacak şekilde yapılandırdığınızda bunun etkinleştirilmesi önerilir.</string>
-<string name="content_not_supported_new">Bu içerik henüz PipePipe tarafından desteklenmiyor.\n\nGelecek bir sürümde desteklenmesi umuluyor.</string>
+<string name="content_not_supported_new">Bu içerik henüz SyncPipe tarafından desteklenmiyor.\n\nGelecek bir sürümde desteklenmesi umuluyor.</string>
 <string name="detail_sub_channel_thumbnail_view_description">Kanalın avatar küçük resmi</string>
 <string name="channel_created_by">%s tarafından oluşturuldu</string>
 <string name="video_detail_by">%s tarafından</string>
@@ -756,13 +756,13 @@
 <string name="no_appropriate_file_manager_message_android_10">Bu eylem için uygun bir dosya yöneticisi bulunamadı.
 \nLütfen Depolama Erişim Çerçevesi (SAF) uyumlu bir dosya yöneticisi yükleyin</string>
 <string name="georestricted_content">Bu içerik ülkenizde mevcut değil.</string>
-<string name="soundcloud_go_plus_content_new">Bu bir SoundCloud Go+ parçasıdır, en azından ülkenizde, bu yüzden PipePipe tarafından yayınlanamaz veya indirilemez.</string>
-<string name="private_content_new">Bu içerik özeldir, bu yüzden PipePipe tarafından yayınlanamaz veya indirilemez.</string>
-<string name="youtube_music_premium_content_new">Bu video yalnızca YouTube Music Premium üyelerine açıktır, bu yüzden PipePipe tarafından yayınlanamaz veya indirilemez.</string>
+<string name="soundcloud_go_plus_content_new">Bu bir SoundCloud Go+ parçasıdır, en azından ülkenizde, bu yüzden SyncPipe tarafından yayınlanamaz veya indirilemez.</string>
+<string name="private_content_new">Bu içerik özeldir, bu yüzden SyncPipe tarafından yayınlanamaz veya indirilemez.</string>
+<string name="youtube_music_premium_content_new">Bu video yalnızca YouTube Music Premium üyelerine açıktır, bu yüzden SyncPipe tarafından yayınlanamaz veya indirilemez.</string>
 <string name="live_not_started">Canlı yayın henüz başlamadı.</string>
 <string name="account_terminated">Hesap kapatıldı</string>
 <string name="service_provides_reason">%s bu nedeni sunuyor:</string>
-<string name="paid_content_new">Bu içerik yalnızca ödeme yapan kullanıcılar tarafından kullanılabilir, bu yüzden PipePipe tarafından yayınlanamaz veya indirilemez.</string>
+<string name="paid_content_new">Bu içerik yalnızca ödeme yapan kullanıcılar tarafından kullanılabilir, bu yüzden SyncPipe tarafından yayınlanamaz veya indirilemez.</string>
 <string name="featured">Öne Çıkan</string>
 <string name="radio">Radyo</string>
 <string name="auto_device_theme_title">Otomatik (cihaz teması)</string>
@@ -917,13 +917,13 @@
 <string name="speeding_playback_title">Oynatmayı hızlandırmak için uzun basın</string>
 <string name="view_on_github">GitHub\'da görüntüle</string>
 <string name="donation_dialog_title">Projeyi Destekle</string>
-<string name="donation_dialog_message">PipePipe\'ı kullandığınız için teşekkürler! Yararlı bulduysanız, lütfen Ko-Fi üzerinden destekçi olmayı düşünün. Desteğiniz benim için önemlidir ve daha fazla heyecan verici yeni özellik eklememe yardımcı olur. Her katkı önemlidir! 😇</string>
+<string name="donation_dialog_message">SyncPipe\'ı kullandığınız için teşekkürler! Yararlı bulduysanız, lütfen Ko-Fi üzerinden destekçi olmayı düşünün. Desteğiniz benim için önemlidir ve daha fazla heyecan verici yeni özellik eklememe yardımcı olur. Her katkı önemlidir! 😇</string>
 <string name="fullscreen_gesture_control_summary">Tam ekrana girmek / çıkmak için jestleri kullan</string>
 <string name="fullscreen_gesture_control_title">Tam ekran jest kontrolü</string>
-<string name="require_audio_focus_summary">Yalnızca PipePipe\'ın ses çaldığından emin ol</string>
+<string name="require_audio_focus_summary">Yalnızca SyncPipe\'ın ses çaldığından emin ol</string>
 <string name="require_audio_focus_title">Ses odağı gerektir</string>
 <string name="decoder_init_failure">Kod çözücü başlatma başarısız oldu</string>
-<string name="unable_to_decode_summary">Cihazınız gerekli donanım kod çözücülerinden yoksun, bu yüzden bu videoyu PipePipe\'ta oynatamazsınız.\nLütfen indirin ve VLC\'de oynatın.</string>
+<string name="unable_to_decode_summary">Cihazınız gerekli donanım kod çözücülerinden yoksun, bu yüzden bu videoyu SyncPipe\'ta oynatamazsınız.\nLütfen indirin ve VLC\'de oynatın.</string>
 <string name="settings_category_gestures_summary">Jest Ayarları</string>
 <string name="resize_pinch">Sıkıştır</string>
 <string name="pinch_to_zoom_selected">Yakınlaştırmak için sıkıştırın.</string>

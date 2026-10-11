@@ -314,7 +314,12 @@ class PlayerLayoutController(private val player: Player) {
         }
 
         player.menuController.buildPlaybackSpeedMenu()
-        binding.playbackSpeed.visibility = View.VISIBLE
+        binding.playbackSpeed.visibility =
+            if (PlayerHelper.isPlaybackSpeedControlsShown(player.context)) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
     }
 
     //////////////////////////////////////////////////////////////////////////

@@ -24,6 +24,7 @@
     <string name="brightness_gesture_control_key">brightness_gesture_control</string>
     <string name="fullscreen_gesture_control_key">fullscreen_gesture_control</string>
     <string name="pinch_to_zoom_key">pinch_to_zoom</string>
+    <string name="double_tap_seek_gesture_control_key">double_tap_seek_gesture_control</string>
     <string name="swipe_seek_gesture_control_key">swipe_seek_gesture_control</string>
     <string name="playback_speed_gesture_control_key">playback_speed_gesture_control</string>
     <string name="resume_on_audio_focus_gain_key">resume_on_audio_focus_gain</string>
@@ -321,6 +322,7 @@
     <string name="playback_speed_key">playback_speed_key</string>
     <string name="playback_pitch_key">playback_pitch_key</string>
     <string name="playback_skip_silence_key">playback_skip_silence_key</string>
+    <string name="show_playback_speed_controls_key">show_playback_speed_controls_key</string>
 
     <string name="app_language_key">app_language_key</string>
 
@@ -1791,6 +1793,9 @@
         <item>@string/sponsor_block_skip_mode_highlight_value</item>
     </string-array>
     <string name="remember_search_filters_key">remember_search_filters</string>
+    <string name="import_youtube_takeout_key">import_youtube_takeout</string>
+    <string name="import_youtube_watch_history_key">import_youtube_watch_history</string>
+    <string name="import_youtube_playlists_key">import_youtube_playlists</string>
     <string name="import_subscriptions_key">import_subscriptions</string>
     <string name="export_subscriptions_key">export_subscriptions</string>
     <string name="import_youtube_subscriptions_key">import_youtube_subscriptions</string>

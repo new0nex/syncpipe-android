@@ -65,6 +65,15 @@ public abstract class StreamHistoryDAO implements HistoryDAO<StreamHistoryEntity
     @Nullable
     public abstract StreamHistoryEntity getLatestEntry(long streamId);
 
+    @Query("SELECT COALESCE(SUM(" + STREAM_REPEAT_COUNT + "), 0) FROM "
+            + STREAM_HISTORY_TABLE + " WHERE " + JOIN_STREAM_ID + " = :streamId")
+    public abstract long getTotalRepeatCount(long streamId);
+
+    @Query("SELECT MAX(" + STREAM_ACCESS_DATE + ") FROM " + STREAM_HISTORY_TABLE
+            + " WHERE " + JOIN_STREAM_ID + " = :streamId")
+    @Nullable
+    public abstract Long getLatestAccessDateMillis(long streamId);
+
     @Query("DELETE FROM " + STREAM_HISTORY_TABLE + " WHERE " + JOIN_STREAM_ID + " = :streamId")
     public abstract int deleteStreamHistory(long streamId);
 

@@ -130,7 +130,7 @@
     <string name="popup_playing_toast">Reproduzindo em modo pop-up</string>
     <string name="content">Conteúdo</string>
     <string name="restricted_video">Esse vídeo tem restrição de idade.\n\nDesabilite em &quot;%1$s&quot; nas configurações caso queira reproduzi-lo.</string>
-    <string name="restricted_video_no_stream">Esse vídeo tem restrição de idade. \nDevido às novas políticas de vídeos com restrição de idade do YouTube, o PipePipe não pode acessar esse vídeo, e logo não pode reproduzi-lo.</string>
+    <string name="restricted_video_no_stream">Esse vídeo tem restrição de idade. \nDevido às novas políticas de vídeos com restrição de idade do YouTube, o SyncPipe não pode acessar esse vídeo, e logo não pode reproduzi-lo.</string>
     <string name="duration_live">Ao vivo</string>
     <string name="downloads">Downloads</string>
     <string name="downloads_title">Downloads</string>
@@ -155,10 +155,10 @@
     <string name="just_once">Apenas uma vez</string>
     <string name="file">Arquivo</string>
     <string name="notifications">Notificações</string>
-    <string name="notification_channel_name">Notificação PipePipe</string>
-    <string name="notification_channel_description">Notificações para reprodutor do PipePipe</string>
+    <string name="notification_channel_name">Notificação SyncPipe</string>
+    <string name="notification_channel_description">Notificações para reprodutor do SyncPipe</string>
     <string name="app_update_notification_channel_name">Atualizar notificações do app</string>
-    <string name="app_update_notification_channel_description">Notificações para novas versões do PipePipe</string>
+    <string name="app_update_notification_channel_description">Notificações para novas versões do SyncPipe</string>
     <string name="hash_channel_name">Notificações de Hash de Vídeo</string>
     <string name="hash_channel_description">Notificações para o progresso do hashing de vídeo</string>
     <string name="streams_notification_channel_name">Novos vídeos</string>
@@ -175,7 +175,7 @@
     <string name="recaptcha_cookies_cleared">Os Cookies de reCAPTCHA foram limpos</string>
     <string name="import_data_summary">Sobrescrever seu histórico, inscrições, listas de reprodução e (opcionalmente) configurações</string>
     <string name="export_data_summary">Exportar histórico, inscrições, listas de reprodução e configurações</string>
-    <string name="clear_cookie_summary">Limpar cookies que o PipePipe armazena quando um reCAPTCHA é resolvido</string>
+    <string name="clear_cookie_summary">Limpar cookies que o SyncPipe armazena quando um reCAPTCHA é resolvido</string>
     <string name="clear_views_history_title">Limpar histórico de exibição</string>
     <string name="clear_views_history_summary">Remove o histórico de exibição e reprodução</string>
     <string name="delete_view_history_alert">Deseja remover o histórico de exibição?</string>
@@ -218,7 +218,7 @@
     <string name="restore_defaults_confirmation">Gostaria de restaurar para padrão?</string>
     <string name="permission_display_over_apps">Dar permissão para exibir sobre outros aplicativos</string>
     <!-- error activity -->
-    <string name="error_report_notification_title_new">PipePipe encontrou um erro, toque para relatar</string>
+    <string name="error_report_notification_title_new">SyncPipe encontrou um erro, toque para relatar</string>
     <string name="error_report_notification_toast">Um erro ocorreu, veja a notificação</string>
     <string name="sorry_string">Perdão, isso não deveria ter acontecido.</string>
     <string name="error_report_button_text">Reporte esse erro via e-mail</string>
@@ -297,7 +297,7 @@
     <string name="msg_name">Nome do Arquivo</string>
     <string name="msg_threads">Tópicos</string>
     <string name="msg_error">Erro</string>
-    <string name="msg_running_new">PipePipe Baixando</string>
+    <string name="msg_running_new">SyncPipe Baixando</string>
     <string name="msg_running_detail">Toque para detalhes</string>
     <string name="msg_calculating_hash">Calculando hash</string>
     <string name="msg_wait">Favor, aguarde...</string>
@@ -319,7 +319,7 @@
     <string name="charset_most_special_characters">Caracteres mais especiais</string>
     <string name="toast_no_player">Sem app instalado para reproduzir tal arquivo</string>
     <!-- About -->
-    <string name="title_activity_about_new">Sobre PipePipe</string>
+    <string name="title_activity_about_new">Sobre SyncPipe</string>
     <string name="title_licenses">Licenças de Terceiros</string>
     <string name="copyright">© %1$s por %2$s sob %3$s</string>
     <string name="tab_about">Sobre</string>
@@ -511,8 +511,8 @@
     <string name="low_quality_smaller">Baixa qualidade (menor)</string>
     <string name="dont_show">Não exibir</string>
     <!-- App update notification -->
-    <string name="app_update_unavailable_toast">Você está rodando a última versão do PipePipe</string>
-    <string name="app_update_notification_content_title_new">Atualização do PipePipe disponível!</string>
+    <string name="app_update_unavailable_toast">Você está rodando a última versão do SyncPipe</string>
+    <string name="app_update_notification_content_title_new">Atualização do SyncPipe disponível!</string>
     <string name="app_update_notification_content_text">Toque para baixar</string>
     <string name="missions_header_finished">Terminado</string>
     <string name="missions_header_pending">Pendente</string>
@@ -548,7 +548,7 @@
     <string name="error_http_unsupported_range">O servidor não aceita trasnferências multi-thread, tente novamente com @string/msg_threads = 1</string>
     <string name="error_http_not_found">Não encontrado</string>
     <string name="error_postprocessing_failed">Falha no pós-processamento</string>
-    <string name="error_postprocessing_stopped_new">PipePipe foi fechado enquanto trabalhava nesse arquivo</string>
+    <string name="error_postprocessing_stopped_new">SyncPipe foi fechado enquanto trabalhava nesse arquivo</string>
     <string name="error_insufficient_storage">Sem armazenamento disponível no dispositivo</string>
     <string name="error_progress_lost">Progresso perdido, o arquivo foi removido</string>
     <string name="error_timeout">Conexão perdida, muito tempo de espera</string>
@@ -624,15 +624,15 @@
     <string name="feed_update_threshold_option_always_update">Sempre atualizar</string>
     <string name="feed_load_error">Erro ao carregar o feed</string>
     <string name="feed_load_error_account_info">Não foi possível carregar o feed de &quot;%s&quot;</string>
-    <string name="feed_load_error_terminated">A conta desse autor foi finalizada.\nPipePipe não será capaz de carregar esse feed no futuro.\nGostaria de cancelar a inscrição desse canal?</string>
+    <string name="feed_load_error_terminated">A conta desse autor foi finalizada.\nSyncPipe não será capaz de carregar esse feed no futuro.\nGostaria de cancelar a inscrição desse canal?</string>
     <string name="feed_load_error_fast_unknown">O modo feed rápido não tem mais informação sobre isso.</string>
     <string name="feed_use_dedicated_fetch_method_title">Pegue de um feed dedicado quando disponível</string>
     <string name="feed_use_dedicated_fetch_method_summary">Disponível em alguns serviços, usualmente muito mais rápido porém pode retornar uma quantidade limitada de itens, frequentemente informações incompletas (exemplo: sem duração, tipo de item ou status ao vivo)</string>
     <string name="feed_use_dedicated_fetch_method_enable_button">Habilitar modo rápido</string>
     <string name="feed_use_dedicated_fetch_method_disable_button">Desabilitar modo rápido</string>
-    <string name="feed_use_dedicated_fetch_method_help_text">Você acha que o feed está carregando lento demais? Se acha, tente habilitar o carregamento rápido (você pode habilitá-lo ou desabilitá-lo nas configurações ou presisonando o botão abaixo). \n \nPipePipe oferece duas estratégias de carregamento do feed: \n• Pegando o canal de inscrição completo, que é mais lento porém completo. \n• Usando um serviço dedicado, que é mais rápido mas usualmente não completo. \n \nA diferença entre os dois é que o mais rápido não recebe algumas informações, como a duração do item e seu tipo (não consegue discernir transmissões ao vivo e vídeos comuns) e também pode retornar menos itens. \n \nYouTube é um exemplo de serviço que oferece esse método rápido com seu feed RSS. \n \Então é sua preferência escolher entre: velocidade ou precisão da informação.</string>
+    <string name="feed_use_dedicated_fetch_method_help_text">Você acha que o feed está carregando lento demais? Se acha, tente habilitar o carregamento rápido (você pode habilitá-lo ou desabilitá-lo nas configurações ou presisonando o botão abaixo). \n \nSyncPipe oferece duas estratégias de carregamento do feed: \n• Pegando o canal de inscrição completo, que é mais lento porém completo. \n• Usando um serviço dedicado, que é mais rápido mas usualmente não completo. \n \nA diferença entre os dois é que o mais rápido não recebe algumas informações, como a duração do item e seu tipo (não consegue discernir transmissões ao vivo e vídeos comuns) e também pode retornar menos itens. \n \nYouTube é um exemplo de serviço que oferece esse método rápido com seu feed RSS. \n \Então é sua preferência escolher entre: velocidade ou precisão da informação.</string>
     <string name="feed_toggle_show_played_items">Exibir itens assistidos</string>
-    <string name="content_not_supported_new">Esse conteúdo ainda não é suportado pelo PipePipe.\n\nEsperamos que seja suportado em uma versão futura.</string>
+    <string name="content_not_supported_new">Esse conteúdo ainda não é suportado pelo SyncPipe.\n\nEsperamos que seja suportado em uma versão futura.</string>
     <string name="detail_sub_channel_thumbnail_view_description">Miniatura de avatar do canal</string>
     <string name="channel_created_by">Criado por %s</string>
     <string name="video_detail_by">Por %s</string>
@@ -645,13 +645,13 @@
     <string name="no_appropriate_file_manager_message">Nenhum gerenciador de arquivos apropriado foi encontrado nessa ação. \nFavor instale um gerenciador de arquivos ou tente desativar &quot;%s&quot; nas configurações de transferências</string>
     <string name="no_appropriate_file_manager_message_android_10">Nenhum gerenciador de arquivos apropriado foi encontrado nessa ação. \nFavor instale um gerenciador de arquivos compatível com o &quot;Framework de Acesso ao Armazenamento&quot;</string>
     <string name="georestricted_content">Esse conteúdo não está disponível em seu país.</string>
-    <string name="soundcloud_go_plus_content">Esse é uma trilha SoundCloud Go+, pelo menos em seu país, logo não pode ser reproduzida ou transferida pelo PipePipe.</string>
-    <string name="private_content_new">Esse conteúdo é privado, logo não pode ser reproduzido ou transferido pelo PipePipe.</string>
-    <string name="youtube_music_premium_content">Esse vídeo está disponível apenas para membros do YouTube Music Premium, logo não pode ser reproduzido ou transferido pelo PipePipe.</string>
+    <string name="soundcloud_go_plus_content">Esse é uma trilha SoundCloud Go+, pelo menos em seu país, logo não pode ser reproduzida ou transferida pelo SyncPipe.</string>
+    <string name="private_content_new">Esse conteúdo é privado, logo não pode ser reproduzido ou transferido pelo SyncPipe.</string>
+    <string name="youtube_music_premium_content">Esse vídeo está disponível apenas para membros do YouTube Music Premium, logo não pode ser reproduzido ou transferido pelo SyncPipe.</string>
     <string name="live_not_started">O evento ao vivo ainda não começou.</string>
     <string name="account_terminated">Conta excluída</string>
     <string name="service_provides_reason">%s fornece essa razão:</string>
-    <string name="paid_content_new">Esse conteúdo está disponível apenas para usuários que pagaram, logo não pode ser reproduzido ou transferido pelo PipePipe.</string>
+    <string name="paid_content_new">Esse conteúdo está disponível apenas para usuários que pagaram, logo não pode ser reproduzido ou transferido pelo SyncPipe.</string>
     <string name="featured">Destaque</string>
     <string name="radio">Rádio</string>
     <string name="auto_device_theme_title">Automático (tema do dispositivo)</string>

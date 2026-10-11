@@ -32,6 +32,10 @@ public interface PlaylistDAO extends BasicDAO<PlaylistEntity> {
     @Query("SELECT * FROM " + PLAYLIST_TABLE + " WHERE " + PLAYLIST_ID + " = :playlistId")
     Flowable<List<PlaylistEntity>> getPlaylist(long playlistId);
 
+    @Query("SELECT " + PLAYLIST_ID + " FROM " + PLAYLIST_TABLE
+            + " WHERE name = :playlistName LIMIT 1")
+    Long getPlaylistIdByName(String playlistName);
+
     @Query("DELETE FROM " + PLAYLIST_TABLE + " WHERE " + PLAYLIST_ID + " = :playlistId")
     int deletePlaylist(long playlistId);
 

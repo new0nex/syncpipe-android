@@ -126,6 +126,9 @@ class PlayerGestureController(private val player: Player) {
                         return FastSeekDirection.NONE
                     }
                     val exoPlayer = player.simpleExoPlayer
+                    if (!PlayerHelper.isDoubleTapSeekGestureEnabled(player.context)) {
+                        return FastSeekDirection.NONE
+                    }
                     if (portion == DisplayPortion.LEFT) {
                         // Check if it's possible to rewind
                         // Small puffer to eliminate infinite rewind seeking

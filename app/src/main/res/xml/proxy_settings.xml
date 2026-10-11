@@ -26,11 +26,4 @@
             app:singleLineTitle="false"
             android:dependency="@string/proxy_token_key"
             app:iconSpaceReserved="false" />
-
-    <Preference
-            android:key="@string/donation_encouragement_key"
-            android:title="@string/subscription_kofi_title"
-            android:dependency="@string/proxy_token_key"
-            app:singleLineTitle="false"
-            app:iconSpaceReserved="false" />
 </PreferenceScreen>

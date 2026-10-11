@@ -113,8 +113,8 @@
     <string name="enable_watch_history_summary">Запоминать воспроизведённые потоки</string>
     <string name="resume_on_audio_focus_gain_title">Возобновить при фокусе</string>
     <string name="resume_on_audio_focus_gain_summary">Возобновлять воспроизведение после перерывов (например, телефонных звонков)</string>
-    <string name="notification_channel_name">Уведомление PipePipe</string>
-    <string name="notification_channel_description">Уведомления для плеера PipePipe</string>
+    <string name="notification_channel_name">Уведомление SyncPipe</string>
+    <string name="notification_channel_description">Уведомления для плеера SyncPipe</string>
     <string name="settings_category_downloads_title">Загрузки</string>
     <string name="settings_file_charset_title">Допустимые символы имён файлов</string>
 &gt;
@@ -706,11 +706,11 @@
     </plurals>
     <string name="restricted_video_no_stream_new">Это видео имеет возрастные ограничения.
 Войдите в аккаунт через «Настройки», чтобы посмотреть его.</string>
-    <string name="app_update_notification_channel_description_new">Уведомления о новых версиях PipePipe</string>
-    <string name="clear_cookie_summary_new">Очистить cookies, сохранённые PipePipe при решении reCAPTCHA</string>
-    <string name="error_report_notification_title_new">В PipePipe произошла ошибка. Нажмите, чтобы сообщить о ней</string>
+    <string name="app_update_notification_channel_description_new">Уведомления о новых версиях SyncPipe</string>
+    <string name="clear_cookie_summary_new">Очистить cookies, сохранённые SyncPipe при решении reCAPTCHA</string>
+    <string name="error_report_notification_title_new">В SyncPipe произошла ошибка. Нажмите, чтобы сообщить о ней</string>
     <string name="error_report_open_issue_button_text_new">Сообщить на GitHub</string>
-    <string name="msg_running_new">Загружает PipePipe</string>
+    <string name="msg_running_new">Загружает SyncPipe</string>
     <string name="title_activity_about_new">О NewPipe</string>
     <string name="app_description_new">Свободное Android-приложение для удобного и независимого просмотра YouTube, NicoNico и BiliBili </string>
     <string name="app_license_title_new">Лицензия NewPipe (Upstream)</string>
@@ -733,17 +733,17 @@
     </string-array>
     <string name="large_grid">Крупная сетка</string>
     <string name="card">Карточки</string>
-    <string name="app_update_unavailable_toast">У вас установлена последняя версия PipePipe</string>
-    <string name="app_update_notification_content_title_new">Доступно обновление PipePipe!</string>
-    <string name="error_postprocessing_stopped_new">Приложение PipePipe было закрыто во время обработки файла</string>
+    <string name="app_update_unavailable_toast">У вас установлена последняя версия SyncPipe</string>
+    <string name="app_update_notification_content_title_new">Доступно обновление SyncPipe!</string>
+    <string name="error_postprocessing_stopped_new">Приложение SyncPipe было закрыто во время обработки файла</string>
     <string name="feed_load_error_terminated_new">Аккаунт автора был удалён.
-PipePipe больше не сможет загружать эту подписку.
+SyncPipe больше не сможет загружать эту подписку.
 Хотите отписаться от этого канала?</string>
     <string name="feed_use_dedicated_fetch_method_help_text_new">Вам кажется, что лента загружается слишком медленно? Если так, попробуйте включить быструю загрузку (это можно сделать в настройках или нажав кнопку ниже).
 
 
 
-PipePipe предлагает две стратегии загрузки ленты:
+SyncPipe предлагает две стратегии загрузки ленты:
 
 • Полная загрузка каналов подписок: работает медленно, но предоставляет полные данные.
 
@@ -848,14 +848,14 @@ PipePipe предлагает две стратегии загрузки лен�
     <string name="sponsor_block_manual_skip_button">Пропустить</string>
     <string name="sponsor_block_show_manual_skip_title">Кнопки ручного управления</string>
     <string name="sponsor_block_show_manual_skip_summary">Показывать на экране кнопки для ручного пропуска или возврата сегментов. Рекомендуется включить, если категории настроены на ручной пропуск.</string>
-    <string name="content_not_supported_new">Этот контент пока не поддерживается в PipePipe.
+    <string name="content_not_supported_new">Этот контент пока не поддерживается в SyncPipe.
 
 Надеемся, поддержка появится в будущих версиях.</string>
-    <string name="soundcloud_go_plus_content_new">Этот трек относится к категории SoundCloud Go+ (по крайней мере, в вашей стране), поэтому PipePipe не может его воспроизвести или скачать.</string>
-    <string name="private_content_new">Это приватный контент, поэтому PipePipe не может его воспроизвести или скачать.</string>
-    <string name="youtube_music_premium_content_new">Это видео доступно только для подписчиков YouTube Music Premium, поэтому PipePipe не может его воспроизвести или скачать.</string>
+    <string name="soundcloud_go_plus_content_new">Этот трек относится к категории SoundCloud Go+ (по крайней мере, в вашей стране), поэтому SyncPipe не может его воспроизвести или скачать.</string>
+    <string name="private_content_new">Это приватный контент, поэтому SyncPipe не может его воспроизвести или скачать.</string>
+    <string name="youtube_music_premium_content_new">Это видео доступно только для подписчиков YouTube Music Premium, поэтому SyncPipe не может его воспроизвести или скачать.</string>
     <string name="live_not_started">Трансляция ещё не началась.</string>
-    <string name="paid_content_new">Это платный контент, поэтому PipePipe не может его воспроизвести или скачать.</string>
+    <string name="paid_content_new">Это платный контент, поэтому SyncPipe не может его воспроизвести или скачать.</string>
     <string name="metadata_subscribers">Подписчики</string>
     <string name="remove_duplicates">Удалить дубликаты</string>
     <string name="remove_duplicates_popup_title">Удалить дубликаты?</string>
@@ -977,14 +977,14 @@ PipePipe предлагает две стратегии загрузки лен�
     <string name="random_play_order_title">Случайный порядок</string>
     <string name="random_play_order_summary">Автоматически перемешивать локальные плейлисты при воспроизведении в фоне</string>
     <string name="speeding_playback_title">Долгое нажатие для ускорения</string>
-    <string name="donation_dialog_title">Нравится PipePipe?</string>
+    <string name="donation_dialog_title">Нравится SyncPipe?</string>
     <string name="donation_dialog_message">Поддержите нас на Ko-fi, чтобы просмотр видео оставался открытым и свободным от слежки.</string>
     <string name="fullscreen_gesture_control_summary">Использовать жесты для входа и выхода из полноэкранного режима</string>
     <string name="fullscreen_gesture_control_title">Управление полноэкранным режимом</string>
-    <string name="require_audio_focus_summary">Воспроизводить звук только в PipePipe</string>
+    <string name="require_audio_focus_summary">Воспроизводить звук только в SyncPipe</string>
     <string name="require_audio_focus_title">Запрашивать аудиофокус</string>
     <string name="decoder_init_failure">Ошибка инициализации декодера</string>
-    <string name="unable_to_decode_summary">Ваше устройство не поддерживает необходимые аппаратные декодеры, поэтому PipePipe не может воспроизвести это видео.
+    <string name="unable_to_decode_summary">Ваше устройство не поддерживает необходимые аппаратные декодеры, поэтому SyncPipe не может воспроизвести это видео.
 Пожалуйста, скачайте его и откройте через сторонний плеер (например, VLC).</string>
     <string name="settings_category_gestures_summary">Настройки жестов</string>
     <string name="settings_category_bullet_comments_summary">Настройки комментариев над видео</string>

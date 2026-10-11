@@ -2,6 +2,7 @@ package org.schabi.newpipe.player;
 
 import static org.schabi.newpipe.QueueItemMenuUtil.openPopupMenu;
 import static org.schabi.newpipe.player.helper.PlayerHelper.formatSpeed;
+import static org.schabi.newpipe.player.helper.PlayerHelper.isPlaybackSpeedControlsShown;
 import static org.schabi.newpipe.util.Localization.assureCorrectAppLanguage;
 
 import android.content.*;
@@ -91,6 +92,7 @@ public final class PlayQueueActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.menu_play_queue, m);
         getMenuInflater().inflate(R.menu.menu_play_queue_bg, m);
         onMaybeMuteChanged();
+        m.findItem(R.id.action_playback_speed).setVisible(isPlaybackSpeedControlsShown(this));
         // to avoid null reference
         if (player != null) {
             onPlaybackParameterChanged(player.getPlaybackParameters());
@@ -108,6 +110,8 @@ public final class PlayQueueActivity extends AppCompatActivity
                     .setVisible(player.audioPlayerSelected());
             menu.findItem(R.id.action_switch_background)
                     .setVisible(false);
+            menu.findItem(R.id.action_playback_speed)
+                    .setVisible(isPlaybackSpeedControlsShown(this));
         }
         return super.onPrepareOptionsMenu(m);
     }
@@ -393,7 +397,7 @@ public final class PlayQueueActivity extends AppCompatActivity
     ////////////////////////////////////////////////////////////////////////////
 
     private void openPlaybackParameterDialog() {
-        if (player == null) {
+        if (player == null || !isPlaybackSpeedControlsShown(this)) {
             return;
         }
         PlaybackParameterDialog.newInstance(player.getPlaybackSpeed(), player.getPlaybackPitch(),
@@ -403,7 +407,7 @@ public final class PlayQueueActivity extends AppCompatActivity
     @Override
     public void onPlaybackParameterChanged(final float playbackTempo, final float playbackPitch,
                                            final boolean playbackSkipSilence) {
-        if (player != null) {
+        if (player != null && isPlaybackSpeedControlsShown(this)) {
             player.setPlaybackParameters(playbackTempo, playbackPitch, playbackSkipSilence);
             onPlaybackParameterChanged(player.getPlaybackParameters());
         }
@@ -576,6 +580,7 @@ public final class PlayQueueActivity extends AppCompatActivity
         if (parameters != null) {
             if (menu != null && player != null) {
                 final MenuItem item = menu.findItem(R.id.action_playback_speed);
+                item.setVisible(isPlaybackSpeedControlsShown(this));
                 item.setTitle(formatSpeed(parameters.speed));
             }
         }

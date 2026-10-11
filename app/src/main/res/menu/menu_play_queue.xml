@@ -15,7 +15,7 @@
         android:id="@+id/action_playback_speed"
         android:title="1x"
         android:tooltipText="@string/playback_speed_control"
-        android:visible="true"
+        android:visible="false"
         app:showAsAction="ifRoom" />
 
     <item
