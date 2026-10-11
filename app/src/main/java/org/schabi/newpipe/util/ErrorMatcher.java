@@ -11,7 +11,7 @@ public class ErrorMatcher {
 
     Element body;
 
-    public static String BASE_URL = "https://github.com/InfinityLoop1308/PipePipe";
+    public static String BASE_URL = "https://github.com/new0nex/syncpipe-android/issues";
     public ErrorMatcher(String html) {
         this.body = Jsoup.parse(html).select("div.markdown-body").first();
     }

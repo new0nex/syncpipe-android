@@ -115,12 +115,6 @@
                 android:layout_height="wrap_content"
                 android:inputType="" />
 
-            <Button
-                android:id="@+id/errorReportEmailButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/error_report_button_text" />
-
             <org.schabi.newpipe.views.NewPipeTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

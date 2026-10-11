@@ -69,11 +69,8 @@ public class ErrorActivity extends AppCompatActivity {
     // BUNDLE TAGS
     public static final String ERROR_INFO = "error_info";
 
-    public static final String ERROR_EMAIL_ADDRESS = "feedback@pipepipe.dev";
-    public static final String ERROR_EMAIL_SUBJECT = "Exception in ";
-
     public static final String ERROR_GITHUB_ISSUE_URL
-            = "https://github.com/InfinityLoop1308/PipePipe/issues";
+            = "https://github.com/new0nex/syncpipe-android/issues";
 
     public static final DateTimeFormatter CURRENT_TIMESTAMP_FORMATTER
             = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -116,9 +113,6 @@ public class ErrorActivity extends AppCompatActivity {
         // important add guru meditation
         addGuruMeditation();
         currentTimeStamp = CURRENT_TIMESTAMP_FORMATTER.format(LocalDateTime.now());
-
-        activityErrorBinding.errorReportEmailButton.setOnClickListener(v ->
-                openPrivacyPolicyDialog(this, "EMAIL"));
 
         activityErrorBinding.errorReportCopyButton.setOnClickListener(v ->
                 ShareUtils.copyToClipboard(this, buildMarkdown()));
@@ -209,16 +203,7 @@ public class ErrorActivity extends AppCompatActivity {
     }
 
     private void openPrivacyPolicyDialog(final Context context, final String action) {
-        if (action.equals("EMAIL")) { // send on email
-            final Intent i = new Intent(Intent.ACTION_SENDTO)
-                    .setData(Uri.parse("mailto:")) // only email apps should handle this
-                    .putExtra(Intent.EXTRA_EMAIL, new String[]{ERROR_EMAIL_ADDRESS})
-                    .putExtra(Intent.EXTRA_SUBJECT, ERROR_EMAIL_SUBJECT
-                            + getString(R.string.app_name) + " "
-                            + BuildConfig.VERSION_NAME)
-                    .putExtra(Intent.EXTRA_TEXT, buildJson());
-            ShareUtils.openIntentInApp(context, i, true);
-        } else if (action.equals("GITHUB")) { // open the NewPipe issue page on GitHub
+        if (action.equals("GITHUB")) {
             ShareUtils.openUrlInBrowser(this, ERROR_GITHUB_ISSUE_URL, false);
         }
     }

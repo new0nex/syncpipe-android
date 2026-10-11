@@ -42,11 +42,10 @@ class NewVersionWorker(
      *
      * @param versionName    Name of new version
      * @param apkLocationUrl Url with the new apk
-     * @param versionCode    Code of new version
      */
     private fun compareAppVersionAndShowNotification(
         versionName: String,
-        apkLocationUrl: String?,
+        apkLocationUrl: String,
         isManual: Boolean
     ) {
         val currentVersion = parseVersion(BuildConfig.VERSION_NAME)
@@ -64,7 +63,7 @@ class NewVersionWorker(
         }
 
         // A pending intent to open the apk location url in the browser.
-        val intent = Intent(Intent.ACTION_VIEW, apkLocationUrl?.toUri())
+        val intent = Intent(Intent.ACTION_VIEW, apkLocationUrl.toUri())
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         val pendingIntent = PendingIntent.getActivity(
             applicationContext, 0, intent,
@@ -104,8 +103,8 @@ class NewVersionWorker(
             }
         }
 
-        // Make a network request to get latest NewPipe data.
-        val response = DownloaderImpl.getInstance().get(NEWPIPE_API_URL)
+        // Make a network request to get latest SyncPipe release data.
+        val response = DownloaderImpl.getInstance().get(SYNCPIPE_RELEASES_API_URL)
         handleResponse(response)
     }
 
@@ -130,29 +129,46 @@ class NewVersionWorker(
             val includePreRelease = prefs.getBoolean(applicationContext.getString(R.string.show_prerelease_key), false)
             var selectedRelease: JsonObject? = null
 
-            // 选择最新符合要求的版本（稳定版或包括预发布）
             for (i in 0 until githubReleases.size) {
                 val release = githubReleases.getObject(i)
                 if (!includePreRelease && release.getBoolean("prerelease")) continue
+                if (findCompatibleApkUrl(release, Build.SUPPORTED_ABIS) == null) continue
                 if (selectedRelease == null || isNewerRelease(release, selectedRelease)) {
                     selectedRelease = release
                 }
             }
 
             selectedRelease?.let { release ->
-                val versionName = release.getString("name").removePrefix("v")
+                val versionName = releaseVersionName(release)
                 val apkUrl = findCompatibleApkUrl(release, Build.SUPPORTED_ABIS)
-                compareAppVersionAndShowNotification(versionName, apkUrl, inputData.getBoolean(IS_MANUAL, false))
+                if (apkUrl != null) {
+                    compareAppVersionAndShowNotification(
+                        versionName,
+                        apkUrl,
+                        inputData.getBoolean(IS_MANUAL, false)
+                    )
+                }
             }
         } catch (e: JsonParserException) {
-            if (DEBUG) Log.w(TAG, "JSON解析错误", e)
+            if (DEBUG) Log.w(TAG, "Could not parse GitHub releases JSON", e)
+        } catch (e: IllegalArgumentException) {
+            if (DEBUG) Log.w(TAG, "Could not parse release version", e)
         }
     }
 
     private fun isNewerRelease(newRelease: JsonObject, currentRelease: JsonObject): Boolean {
-        val newVersion = parseVersion(newRelease.getString("name").removePrefix("v"))
-        val currentVersion = parseVersion(currentRelease.getString("name").removePrefix("v"))
+        val newVersion = parseVersion(releaseVersionName(newRelease))
+        val currentVersion = parseVersion(releaseVersionName(currentRelease))
         return compareVersions(newVersion, currentVersion) > 0
+    }
+
+    private fun releaseVersionName(release: JsonObject): String {
+        val tagName = release.getString("tag_name")
+        if (!tagName.isNullOrBlank()) {
+            return tagName.removePrefix("v")
+        }
+
+        return release.getString("name").removePrefix("v")
     }
 
     private fun findCompatibleApkUrl(release: JsonObject, abis: Array<String>): String? {
@@ -193,7 +209,8 @@ class NewVersionWorker(
         private val DEBUG = MainActivity.DEBUG
         private val TAG = NewVersionWorker::class.java.simpleName
         private val RELEASE_APK_ABIS = listOf("armeabi-v7a", "arm64-v8a", "x86_64", "x86")
-        private const val NEWPIPE_API_URL = "https://api.github.com/repositories/490984887/releases"
+        private const val SYNCPIPE_RELEASES_API_URL =
+            "https://api.github.com/repos/new0nex/syncpipe-android/releases"
         private const val IS_MANUAL = "isManual"
 
         private fun getReleaseApkAbi(name: String): String? {
@@ -201,7 +218,8 @@ class NewVersionWorker(
         }
         /**
          * Start a new worker which checks if all conditions for performing a version check are met,
-         * fetches the API endpoint [.NEWPIPE_API_URL] containing info about the latest NewPipe
+         * fetches the API endpoint [.SYNCPIPE_RELEASES_API_URL] containing info about the latest
+         * SyncPipe
          * version and displays a notification about an available update if one is available.
          * <br></br>
          * Following conditions need to be met, before data is requested from the server:
