@@ -139,6 +139,7 @@ abstract class BasePlayerGestureListener(
             gestureController.gestureDetector.onTouchEvent(cancelEvent)
             cancelEvent.recycle()
             if (gestureController.longPressSpeedingEnabled) {
+                player.playbackSpeed /= gestureController.longPressSpeedingFactor
                 gestureController.longPressSpeedingEnabled = false
             }
         }
@@ -222,6 +223,7 @@ abstract class BasePlayerGestureListener(
                     isMovingInMain = false
                     onScrollEnd(PlayerService.PlayerType.VIDEO, event)
                 } else if (gestureController.longPressSpeedingEnabled) {
+                    player.playbackSpeed /= gestureController.longPressSpeedingFactor
                     gestureController.longPressSpeedingEnabled = false
                 }
             }
@@ -399,7 +401,8 @@ abstract class BasePlayerGestureListener(
             player.checkPopupPositionBounds()
             player.changePopupSize(player.screenWidth.toInt())
         } else {
-            gestureController.longPressSpeedingEnabled = false
+            gestureController.longPressSpeedingEnabled = true
+            player.playbackSpeed *= gestureController.longPressSpeedingFactor
         }
     }
 

@@ -1096,8 +1096,13 @@
 <string name="import_youtube_takeout_option_history">Watch history</string>
 <string name="import_youtube_takeout_option_playlists">Playlists</string>
 <string name="import_youtube_takeout_option_subscriptions">Subscriptions</string>
+<string name="import_youtube_takeout_reading">Reading YouTube Takeout…</string>
 <string name="import_youtube_takeout_ongoing">Importing YouTube Takeout…</string>
 <string name="import_youtube_takeout_nothing_selected">Select at least one item to import</string>
+<string name="import_youtube_takeout_option_not_found">%1$s: not found</string>
+<string name="import_youtube_takeout_history_preview">Watch history: %1$d unique videos from %2$d watch events</string>
+<string name="import_youtube_takeout_playlists_preview">Playlists: %1$d local lists with %2$d videos, %3$d online lists</string>
+<string name="import_youtube_takeout_subscriptions_preview">Subscriptions: %1$d channels</string>
 <string name="import_youtube_takeout_history_result">History: imported %1$d unique videos from %2$d watch events. %3$d repeated watches were merged.</string>
 <string name="import_youtube_takeout_history_skipped">History skipped %1$d unsupported entries.</string>
 <string name="import_youtube_takeout_playlists_result">Playlists: imported %1$d local playlists with %2$d videos and %3$d online bookmarks.</string>

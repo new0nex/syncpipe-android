@@ -16,7 +16,9 @@ import org.schabi.newpipe.database.AppDatabase;
 import org.schabi.newpipe.database.history.dao.StreamHistoryDAO;
 import org.schabi.newpipe.database.history.model.StreamHistoryEntity;
 import org.schabi.newpipe.database.stream.dao.StreamDAO;
+import org.schabi.newpipe.database.stream.dao.StreamStateDAO;
 import org.schabi.newpipe.database.stream.model.StreamEntity;
+import org.schabi.newpipe.database.stream.model.StreamStateEntity;
 import org.schabi.newpipe.extractor.ServiceList;
 import org.schabi.newpipe.extractor.stream.StreamInfoItem;
 import org.schabi.newpipe.extractor.stream.StreamType;
@@ -37,6 +39,7 @@ import java.time.format.DateTimeParseException;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -44,6 +47,9 @@ public final class YoutubeWatchHistoryImporter {
     private static final String TAG = YoutubeWatchHistoryImporter.class.getSimpleName();
     private static final int ZIP_LOCAL_FILE_HEADER = 0x04034b50;
     private static final int BUFFER_SIZE = 16 * 1024;
+    private static final long IMPORTED_WATCHED_PROGRESS_MILLIS = TimeUnit.DAYS.toMillis(7);
+    private static final long IMPORTED_WATCHED_DURATION_SECONDS =
+            TimeUnit.MILLISECONDS.toSeconds(IMPORTED_WATCHED_PROGRESS_MILLIS);
 
     private static final DateTimeFormatter TAKEOUT_DATE_FORMATTER =
             DateTimeFormatter.ofPattern("MMM d, yyyy, h:mm:ss a 'GMT'XXX", Locale.US);
@@ -51,11 +57,13 @@ public final class YoutubeWatchHistoryImporter {
     private final AppDatabase database;
     private final StreamDAO streamTable;
     private final StreamHistoryDAO streamHistoryTable;
+    private final StreamStateDAO streamStateTable;
 
     public YoutubeWatchHistoryImporter(@NonNull final Context context) {
         database = NewPipeDatabase.getInstance(context);
         streamTable = database.streamDAO();
         streamHistoryTable = database.streamHistoryDAO();
+        streamStateTable = database.streamStateDAO();
     }
 
     @NonNull
@@ -76,6 +84,28 @@ public final class YoutubeWatchHistoryImporter {
     }
 
     @NonNull
+    public ImportResult previewFrom(@NonNull final StoredFileHelper file) throws IOException {
+        final ParsedHistory parsedHistory;
+        try (SharpStream sharpStream = file.getStream();
+             InputStream inputStream = new BufferedInputStream(new SharpInputStream(sharpStream))) {
+            parsedHistory = parseInput(inputStream);
+        }
+
+        if (parsedHistory.importedVideos.isEmpty()) {
+            throw new IOException("No supported YouTube watch history entries were found. "
+                    + "Select a Google Takeout ZIP containing "
+                    + "\"YouTube and YouTube Music/history/watch-history.html\".");
+        }
+
+        int totalHistoryEntries = 0;
+        for (final ImportedVideo video : parsedHistory.importedVideos.values()) {
+            totalHistoryEntries += video.repeatCount;
+        }
+        return new ImportResult(parsedHistory.importedVideos.size(), totalHistoryEntries,
+                parsedHistory.skippedCards);
+    }
+
+    @NonNull
     private ImportResult importVideos(@NonNull final ParsedHistory parsedHistory) {
         int imported = 0;
         int skipped = parsedHistory.skippedCards;
@@ -90,7 +120,11 @@ public final class YoutubeWatchHistoryImporter {
             item.setUploaderUrl(video.channelUrl);
             item.setThumbnailUrl("https://i.ytimg.com/vi/" + video.videoId + "/hqdefault.jpg");
 
-            final long streamId = streamTable.upsert(new StreamEntity(item));
+            final StreamEntity streamEntity = new StreamEntity(item);
+            if (streamEntity.getDuration() <= 0) {
+                streamEntity.setDuration(IMPORTED_WATCHED_DURATION_SECONDS);
+            }
+            final long streamId = streamTable.upsert(streamEntity);
             final long existingRepeatCount = streamHistoryTable.getTotalRepeatCount(streamId);
             final Long existingLatestMillis = streamHistoryTable.getLatestAccessDateMillis(streamId);
             final long importedLatestMillis = video.latestAccessDate
@@ -111,10 +145,17 @@ public final class YoutubeWatchHistoryImporter {
                     OffsetDateTime.ofInstant(Instant.ofEpochMilli(mergedLatestMillis),
                             ZoneOffset.UTC),
                     mergedRepeatCount));
+            streamStateTable.upsert(new StreamStateEntity(streamId,
+                    getWatchedProgressMillis(streamEntity)));
             imported++;
         }
 
         return new ImportResult(imported, totalHistoryEntries, skipped);
+    }
+
+    private static long getWatchedProgressMillis(@NonNull final StreamEntity streamEntity) {
+        return streamEntity.getDuration() > 0
+                ? streamEntity.getDuration() * 1000 : IMPORTED_WATCHED_PROGRESS_MILLIS;
     }
 
     @NonNull

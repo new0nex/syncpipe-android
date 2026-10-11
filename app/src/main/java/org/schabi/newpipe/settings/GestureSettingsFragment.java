@@ -35,36 +35,30 @@ public class GestureSettingsFragment extends BasePreferenceFragment {
         final ListPreference minimizePref = findPreference(
                 getString(R.string.minimize_gesture_control_key));
 
-        if (fullscreenPref == null || minimizePref == null) {
+        if (fullscreenPref == null || speedPref == null || minimizePref == null) {
             return;
         }
 
         fullscreenPref.setOnPreferenceChangeListener((pref, newValue) -> {
             if (Boolean.TRUE.equals(newValue)) {
-                if (speedPref != null) {
-                    speedPref.setChecked(false);
-                }
+                speedPref.setChecked(false);
                 releaseFullscreenMinimizeMode(minimizePref);
             }
             return true;
         });
 
-        if (speedPref != null) {
-            speedPref.setOnPreferenceChangeListener((pref, newValue) -> {
-                if (Boolean.TRUE.equals(newValue)) {
-                    fullscreenPref.setChecked(false);
-                    releaseFullscreenMinimizeMode(minimizePref);
-                }
-                return true;
-            });
-        }
+        speedPref.setOnPreferenceChangeListener((pref, newValue) -> {
+            if (Boolean.TRUE.equals(newValue)) {
+                fullscreenPref.setChecked(false);
+                releaseFullscreenMinimizeMode(minimizePref);
+            }
+            return true;
+        });
 
         minimizePref.setOnPreferenceChangeListener((pref, newValue) -> {
             if (getString(R.string.minimize_gesture_fullscreen_key).equals(newValue)) {
                 fullscreenPref.setChecked(false);
-                if (speedPref != null) {
-                    speedPref.setChecked(false);
-                }
+                speedPref.setChecked(false);
             }
             return true;
         });

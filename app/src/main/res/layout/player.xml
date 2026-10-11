@@ -232,7 +232,6 @@
                         android:padding="@dimen/player_main_buttons_padding"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
-                        android:visibility="gone"
                         tools:ignore="RtlHardcoded,RtlSymmetry"
                         tools:text="1x" />
 

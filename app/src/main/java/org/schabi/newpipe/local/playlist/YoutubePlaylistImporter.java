@@ -75,7 +75,47 @@ public final class YoutubePlaylistImporter {
     }
 
     @NonNull
+    public ImportResult previewFrom(@NonNull final StoredFileHelper file) throws IOException {
+        final ParsedTakeout parsedTakeout;
+        try (SharpStream sharpStream = file.getStream();
+             InputStream inputStream = new BufferedInputStream(new SharpInputStream(sharpStream))) {
+            parsedTakeout = parseInput(inputStream);
+        }
+
+        if (parsedTakeout.playlists.isEmpty()) {
+            throw new IOException("No supported YouTube playlists were found. "
+                    + "Select a Google Takeout ZIP containing "
+                    + "\"YouTube and YouTube Music/playlists/playlists.csv\".");
+        }
+
+        return countPlaylists(parsedTakeout);
+    }
+
+    @NonNull
     private ImportResult importPlaylists(@NonNull final ParsedTakeout parsedTakeout) {
+        final ImportResult result = countPlaylists(parsedTakeout);
+        int localVideos = 0;
+        for (final TakeoutPlaylist playlist : parsedTakeout.playlists.values()) {
+            if (playlist.title.isEmpty()) {
+                continue;
+            }
+
+            if (playlist.isOnlineFollowable()) {
+                importRemotePlaylist(playlist);
+            } else {
+                localVideos += importLocalPlaylist(playlist);
+            }
+        }
+
+        Log.i(TAG, "Imported YouTube playlists: " + result.getLocalPlaylists() + " local, "
+                + result.getRemotePlaylists() + " remote, "
+                + result.getSkippedPlaylists() + " skipped");
+        return new ImportResult(result.getLocalPlaylists(), localVideos,
+                result.getRemotePlaylists(), result.getSkippedPlaylists());
+    }
+
+    @NonNull
+    private ImportResult countPlaylists(@NonNull final ParsedTakeout parsedTakeout) {
         int localPlaylists = 0;
         int localVideos = 0;
         int remotePlaylists = 0;
@@ -88,16 +128,12 @@ public final class YoutubePlaylistImporter {
             }
 
             if (playlist.isOnlineFollowable()) {
-                importRemotePlaylist(playlist);
                 remotePlaylists++;
             } else {
-                localVideos += importLocalPlaylist(playlist);
+                localVideos += playlist.videoIds.size();
                 localPlaylists++;
             }
         }
-
-        Log.i(TAG, "Imported YouTube playlists: " + localPlaylists + " local, "
-                + remotePlaylists + " remote, " + skippedPlaylists + " skipped");
         return new ImportResult(localPlaylists, localVideos, remotePlaylists, skippedPlaylists);
     }
 

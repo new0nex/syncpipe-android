@@ -17,7 +17,6 @@ import org.schabi.newpipe.ktx.AnimationType
 import org.schabi.newpipe.ktx.animate
 import org.schabi.newpipe.ktx.animateRotation
 import org.schabi.newpipe.local.dialog.PlaylistDialog
-import org.schabi.newpipe.player.helper.PlayerHelper
 import org.schabi.newpipe.sleep.SleepTimerService
 import org.schabi.newpipe.util.NavigationHelper
 import org.schabi.newpipe.util.external_communication.KoreUtils
@@ -43,12 +42,8 @@ class PlayerClickController(private val player: Player) :
         binding.qualityTextView.setOnClickListener { v ->
             player.menuController.onQualityClicked(v)
         }
-        if (PlayerHelper.isPlaybackSpeedControlsShown(player.context)) {
-            binding.playbackSpeed.setOnClickListener { v ->
-                player.menuController.onPlaybackSpeedClicked(v)
-            }
-        } else {
-            binding.playbackSpeed.visibility = View.GONE
+        binding.playbackSpeed.setOnClickListener { v ->
+            player.menuController.onPlaybackSpeedClicked(v)
         }
 
         binding.playbackSeekBar.setOnSeekBarChangeListener(player.progressController)

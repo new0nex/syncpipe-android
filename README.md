@@ -27,6 +27,13 @@ This fork is meant to be practical, stable, and personal-first:
 
 ## Features Added In SyncPipe
 
+### Player Controls
+
+SyncPipe adds settings for player controls that PipePipe does not expose in the same way:
+
+- **Double-tap to seek** in **Settings** > **Gestures** can disable double-tap rewind/fast-forward on the video surface.
+- **Show playback speed controls** in **Settings** > **Video and audio** can hide or show the player tempo, pitch, and skip-silence controls.
+
 ### YouTube Takeout Import
 
 SyncPipe adds a unified YouTube Takeout importer in settings.

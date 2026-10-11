@@ -202,25 +202,94 @@ public class BackupSettingsFragment extends BasePreferenceFragment {
             final StoredFileHelper file = new StoredFileHelper(getContext(), importDataUri,
                     StoredFileHelper.DEFAULT_MIME);
 
-            final boolean[] selected = new boolean[] {true, true, true};
-            new AlertDialog.Builder(requireActivity())
-                    .setTitle(R.string.import_youtube_takeout_title)
-                    .setMultiChoiceItems(new String[] {
-                                    getString(R.string.import_youtube_takeout_option_history),
-                                    getString(R.string.import_youtube_takeout_option_playlists),
-                                    getString(R.string.import_youtube_takeout_option_subscriptions)
-                            },
-                            selected,
-                            (dialog, which, isChecked) -> selected[which] = isChecked)
-                    .setPositiveButton(R.string.import_title, (d, id) ->
-                            importYouTubeTakeout(file, importDataUri,
-                                    new YoutubeTakeoutImporter.ImportSelection(
-                                            selected[0], selected[1], selected[2])))
-                    .setNegativeButton(R.string.cancel, (d, id) ->
-                            d.cancel())
-                    .create()
-                    .show();
+            previewYouTubeTakeout(file, importDataUri);
         }
+    }
+
+    private void previewYouTubeTakeout(final StoredFileHelper file, final Uri importDataUri) {
+        dismissYouTubeTakeoutImportDialog();
+        youtubeTakeoutImportDialog = new AlertDialog.Builder(requireActivity())
+                .setTitle(R.string.import_youtube_takeout_title)
+                .setMessage(R.string.import_youtube_takeout_reading)
+                .setCancelable(false)
+                .create();
+        youtubeTakeoutImportDialog.show();
+
+        final Context appContext = requireContext().getApplicationContext();
+        disposables.add(Single.fromCallable(() -> {
+            final YoutubeTakeoutImporter importer = new YoutubeTakeoutImporter(appContext);
+            return importer.previewFrom(file);
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(preview -> {
+                    dismissYouTubeTakeoutImportDialog();
+                    showYouTubeTakeoutSelectionDialog(file, importDataUri, preview);
+                }, e -> {
+                    dismissYouTubeTakeoutImportDialog();
+                    ErrorUtil.showUiErrorSnackbar(this, "Reading YouTube Takeout", e);
+                }));
+    }
+
+    private void showYouTubeTakeoutSelectionDialog(final StoredFileHelper file,
+                                                  final Uri importDataUri,
+                                                  final YoutubeTakeoutImporter.PreviewResult preview) {
+        final boolean hasHistory = preview.getHistoryResult() != null;
+        final boolean hasPlaylists = preview.getPlaylistResult() != null;
+        final boolean hasSubscriptions = preview.getSubscriptions() != null;
+        final boolean[] selected = new boolean[] {hasHistory, hasPlaylists, hasSubscriptions};
+
+        new AlertDialog.Builder(requireActivity())
+                .setTitle(R.string.import_youtube_takeout_title)
+                .setMultiChoiceItems(new String[] {
+                                formatYouTubeTakeoutHistoryPreview(preview),
+                                formatYouTubeTakeoutPlaylistsPreview(preview),
+                                formatYouTubeTakeoutSubscriptionsPreview(preview)
+                        },
+                        selected,
+                        (dialog, which, isChecked) -> selected[which] = isChecked)
+                .setPositiveButton(R.string.import_title, (d, id) ->
+                        importYouTubeTakeout(file, importDataUri,
+                                new YoutubeTakeoutImporter.ImportSelection(
+                                        selected[0] && hasHistory,
+                                        selected[1] && hasPlaylists,
+                                        selected[2] && hasSubscriptions)))
+                .setNegativeButton(R.string.cancel, (d, id) ->
+                        d.cancel())
+                .create()
+                .show();
+    }
+
+    private String formatYouTubeTakeoutHistoryPreview(
+            final YoutubeTakeoutImporter.PreviewResult preview) {
+        final YoutubeWatchHistoryImporter.ImportResult historyResult = preview.getHistoryResult();
+        if (historyResult == null) {
+            return getString(R.string.import_youtube_takeout_option_not_found,
+                    getString(R.string.import_youtube_takeout_option_history));
+        }
+        return getString(R.string.import_youtube_takeout_history_preview,
+                historyResult.getImportedVideos(), historyResult.getHistoryEntries());
+    }
+
+    private String formatYouTubeTakeoutPlaylistsPreview(
+            final YoutubeTakeoutImporter.PreviewResult preview) {
+        final YoutubePlaylistImporter.ImportResult playlistResult = preview.getPlaylistResult();
+        if (playlistResult == null) {
+            return getString(R.string.import_youtube_takeout_option_not_found,
+                    getString(R.string.import_youtube_takeout_option_playlists));
+        }
+        return getString(R.string.import_youtube_takeout_playlists_preview,
+                playlistResult.getLocalPlaylists(), playlistResult.getLocalVideos(),
+                playlistResult.getRemotePlaylists());
+    }
+
+    private String formatYouTubeTakeoutSubscriptionsPreview(
+            final YoutubeTakeoutImporter.PreviewResult preview) {
+        final Integer subscriptions = preview.getSubscriptions();
+        if (subscriptions == null) {
+            return getString(R.string.import_youtube_takeout_option_not_found,
+                    getString(R.string.import_youtube_takeout_option_subscriptions));
+        }
+        return getString(R.string.import_youtube_takeout_subscriptions_preview, subscriptions);
     }
 
     private void requestExportPathResult(final ActivityResult result) {

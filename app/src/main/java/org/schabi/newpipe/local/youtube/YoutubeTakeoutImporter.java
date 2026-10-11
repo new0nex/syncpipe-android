@@ -36,6 +36,37 @@ public final class YoutubeTakeoutImporter {
     }
 
     @NonNull
+    public PreviewResult previewFrom(@NonNull final StoredFileHelper file) {
+        YoutubeWatchHistoryImporter.ImportResult historyResult = null;
+        YoutubePlaylistImporter.ImportResult playlistResult = null;
+        Integer subscriptions = null;
+        String historyError = null;
+        String playlistError = null;
+        String subscriptionsError = null;
+
+        try {
+            historyResult = new YoutubeWatchHistoryImporter(context).previewFrom(file);
+        } catch (final Exception e) {
+            historyError = friendlyMessage(e);
+        }
+
+        try {
+            playlistResult = new YoutubePlaylistImporter(context).previewFrom(file);
+        } catch (final Exception e) {
+            playlistError = friendlyMessage(e);
+        }
+
+        try {
+            subscriptions = previewSubscriptions(file);
+        } catch (final Exception e) {
+            subscriptionsError = friendlyMessage(e);
+        }
+
+        return new PreviewResult(historyResult, playlistResult, subscriptions,
+                historyError, playlistError, subscriptionsError);
+    }
+
+    @NonNull
     public ImportResult importFrom(@NonNull final StoredFileHelper file,
                                    @NonNull final ImportSelection selection) throws Exception {
         YoutubeWatchHistoryImporter.ImportResult historyResult = null;
@@ -83,6 +114,15 @@ public final class YoutubeTakeoutImporter {
 
         return new ImportResult(historyResult, playlistResult, insertedSubscriptions,
                 subscriptionDetailIds, historyError, playlistError, subscriptionsError);
+    }
+
+    private int previewSubscriptions(@NonNull final StoredFileHelper file) throws Exception {
+        final byte[] subscriptionsCsv = readSubscriptionsCsv(file);
+        return NewPipe
+                .getService(ServiceList.YouTube.getServiceId())
+                .getSubscriptionExtractor()
+                .fromInputStream(new ByteArrayInputStream(subscriptionsCsv), "csv")
+                .size();
     }
 
     @NonNull
@@ -205,6 +245,53 @@ public final class YoutubeTakeoutImporter {
         @NonNull
         public long[] getInsertedSubscriptionIds() {
             return subscriptionDetailIds == null ? new long[0] : subscriptionDetailIds;
+        }
+
+        public String getHistoryError() {
+            return historyError;
+        }
+
+        public String getPlaylistError() {
+            return playlistError;
+        }
+
+        public String getSubscriptionsError() {
+            return subscriptionsError;
+        }
+    }
+
+    public static final class PreviewResult {
+        private final YoutubeWatchHistoryImporter.ImportResult historyResult;
+        private final YoutubePlaylistImporter.ImportResult playlistResult;
+        private final Integer subscriptions;
+        private final String historyError;
+        private final String playlistError;
+        private final String subscriptionsError;
+
+        private PreviewResult(final YoutubeWatchHistoryImporter.ImportResult historyResult,
+                              final YoutubePlaylistImporter.ImportResult playlistResult,
+                              final Integer subscriptions,
+                              final String historyError,
+                              final String playlistError,
+                              final String subscriptionsError) {
+            this.historyResult = historyResult;
+            this.playlistResult = playlistResult;
+            this.subscriptions = subscriptions;
+            this.historyError = historyError;
+            this.playlistError = playlistError;
+            this.subscriptionsError = subscriptionsError;
+        }
+
+        public YoutubeWatchHistoryImporter.ImportResult getHistoryResult() {
+            return historyResult;
+        }
+
+        public YoutubePlaylistImporter.ImportResult getPlaylistResult() {
+            return playlistResult;
+        }
+
+        public Integer getSubscriptions() {
+            return subscriptions;
         }
 
         public String getHistoryError() {
