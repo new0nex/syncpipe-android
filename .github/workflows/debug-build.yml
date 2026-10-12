@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: InfinityLoop1308/PipePipeExtractor
-          ref: c68e10e2e97495877832d8df6cbac55478083019
+          ref: 586325e33ed374ffddd62364dd20c26a999fb107
           path: PipePipeExtractor
 
       - name: Set up JDK 25
