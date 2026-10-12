@@ -23,6 +23,16 @@
         app:singleLineTitle="false"
         app:iconSpaceReserved="false" />
 
+    <ListPreference
+        android:defaultValue="@string/popup_player_mode_value"
+        android:entries="@array/popup_player_mode_descriptions"
+        android:entryValues="@array/popup_player_mode_values"
+        android:key="@string/popup_player_mode_key"
+        android:summary="@string/popup_player_mode_summary"
+        android:title="@string/popup_player_mode_title"
+        app:singleLineTitle="false"
+        app:iconSpaceReserved="false" />
+
     <MultiSelectListPreference
             android:key="@string/advanced_formats_key"
             android:title="@string/advanced_formats_title"

@@ -53,6 +53,7 @@ import com.squareup.picasso.Callback;
 
 import io.reactivex.rxjava3.core.Single;
 import org.schabi.newpipe.App;
+import org.schabi.newpipe.MainActivity;
 import org.schabi.newpipe.R;
 import org.schabi.newpipe.database.stream.model.StreamEntity;
 import org.schabi.newpipe.databinding.FragmentVideoDetailBinding;
@@ -412,6 +413,11 @@ public final class VideoDetailFragment
             updateTabs(currentInfo);
         }
 
+        if (isPlayerAvailable() && player.videoPlayerSelected()
+                && player.getRootView().getParent() == null) {
+            addVideoPlayerView();
+        }
+
         updateStickyPlayerMode();
 
         // Check if it was loading when the fragment was stopped/paused
@@ -424,7 +430,12 @@ public final class VideoDetailFragment
     public void onStop() {
         super.onStop();
 
-        if (!activity.isChangingConfigurations()) {
+        final boolean isSystemPictureInPictureActive = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                && activity instanceof MainActivity
+                && (((MainActivity) activity).isInPictureInPictureMode()
+                || MainActivity.isPictureInPictureStartingOrActive());
+
+        if (!activity.isChangingConfigurations() && !isSystemPictureInPictureActive) {
             activity.sendBroadcast(new Intent(ACTION_VIDEO_FRAGMENT_STOPPED));
         }
     }
@@ -1353,6 +1364,25 @@ public final class VideoDetailFragment
     }
 
     private void openPopupPlayer(final boolean append) {
+        if (!append && PlayerHelper.shouldUsePictureInPictureForPopup(activity)) {
+            if (activity instanceof MainActivity && isPlayerAvailable()) {
+                player.setRecovery();
+                if (((MainActivity) activity).enterPictureInPicturePlayerMode(player)) {
+                    return;
+                } else if (PlayerHelper
+                        .shouldKeepAutoPictureInPictureFromFallingBackToOverlay(activity)) {
+                    Toast.makeText(activity, R.string.picture_in_picture_unavailable,
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } else if (PlayerHelper.shouldKeepAutoPictureInPictureFromFallingBackToOverlay(
+                    activity)) {
+                Toast.makeText(activity, R.string.picture_in_picture_unavailable,
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
         if (!PermissionHelper.isPopupEnabled(activity)) {
             PermissionHelper.showPopupEnablementToast(activity);
             return;
@@ -1537,6 +1567,26 @@ public final class VideoDetailFragment
                 player.onMarkSeekbarRequested(currentInfo);
             }
         }
+    }
+
+    public void restorePlayerViewFromPictureInPicture() {
+        if (binding == null || getView() == null) {
+            return;
+        }
+
+        binding.playerPlaceholder.post(() -> {
+            if (binding == null || !isPlayerAvailable() || getView() == null) {
+                return;
+            }
+            addVideoPlayerView();
+            binding.playerPlaceholder.post(() -> {
+                if (binding != null && isPlayerAvailable()) {
+                    setHeightThumbnail();
+                    player.getRootView().requestLayout();
+                    player.getSurfaceView().requestLayout();
+                }
+            });
+        });
     }
 
     private void removeVideoPlayerView() {

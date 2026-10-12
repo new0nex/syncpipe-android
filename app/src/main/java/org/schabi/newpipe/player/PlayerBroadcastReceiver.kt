@@ -8,6 +8,7 @@ import android.media.AudioManager
 import android.os.Build
 import android.util.Log
 import android.view.WindowManager
+import org.schabi.newpipe.MainActivity
 import org.schabi.newpipe.fragments.detail.VideoDetailFragment
 import org.schabi.newpipe.util.DeviceUtils
 import org.schabi.newpipe.util.Localization.assureCorrectAppLanguage
@@ -101,6 +102,9 @@ class PlayerBroadcastReceiver(private val player: Player) {
                 player.useVideoSource(true)
             }
             VideoDetailFragment.ACTION_VIDEO_FRAGMENT_STOPPED -> {
+                if (MainActivity.isPictureInPictureStartingOrActive()) {
+                    return
+                }
                 player.listeners.isFragmentVisible = false
                 player.onFragmentStopped()
             }
@@ -108,6 +112,11 @@ class PlayerBroadcastReceiver(private val player: Player) {
                 assureCorrectAppLanguage(player.service.instance)
                 if (Player.DEBUG) {
                     Log.d(Player.TAG, "onConfigurationChanged() called")
+                }
+                if (MainActivity.isPictureInPictureStartingOrActive()) {
+                    player.closeAllPopupMenus()
+                    player.closeItemsList()
+                    return
                 }
                 if (player.popupPlayerSelected()) {
                     player.updateScreenSize()

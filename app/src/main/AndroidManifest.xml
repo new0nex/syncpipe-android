@@ -63,7 +63,8 @@
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name"
-                android:launchMode="singleTask" android:exported="true">
+                android:launchMode="singleTask"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,6 +72,15 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+                android:name=".SystemPictureInPictureActivity"
+                android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
+                android:excludeFromRecents="true"
+                android:resizeableActivity="true"
+                android:supportsPictureInPicture="true"
+                android:theme="@style/Theme.AppCompat.NoActionBar"
+                android:exported="false" />
 
         <receiver android:name="androidx.media.session.MediaButtonReceiver" android:exported="true">
             <intent-filter>

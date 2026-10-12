@@ -71,7 +71,9 @@ import org.schabi.newpipe.fragments.list.search.SearchFragment;
 import org.schabi.newpipe.local.feed.notifications.NotificationWorker;
 import org.schabi.newpipe.player.Player;
 import org.schabi.newpipe.player.PlayerIntentConstants;
+import org.schabi.newpipe.player.PlayerService;
 import org.schabi.newpipe.player.event.OnKeyDownListener;
+import org.schabi.newpipe.player.helper.PlayerHelper;
 import org.schabi.newpipe.player.helper.PlayerHolder;
 import org.schabi.newpipe.player.playqueue.PlayQueue;
 import org.schabi.newpipe.util.*;
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean servicesShown = false;
 
     private BroadcastReceiver broadcastReceiver;
-
+    private static boolean pictureInPictureStartingOrActive;
     private static final int ITEM_ID_SUBSCRIPTIONS = -1;
     private static final int ITEM_ID_FEED = -2;
     private static final int ITEM_ID_BOOKMARKS = -3;
@@ -120,6 +122,14 @@ public class MainActivity extends AppCompatActivity {
 
     private long lastBackPressTime = 0;
     private static final int BACK_PRESS_TIMEOUT = 2000;
+
+    public static synchronized boolean isPictureInPictureStartingOrActive() {
+        return pictureInPictureStartingOrActive;
+    }
+
+    public static synchronized void setPictureInPictureStartingOrActive(final boolean active) {
+        pictureInPictureStartingOrActive = active;
+    }
 
     /*//////////////////////////////////////////////////////////////////////////
     // Activity's LifeCycle
@@ -554,6 +564,43 @@ public class MainActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         setIntent(intent);
         handleIntent(intent);
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+
+        final Player player = PlayerHolder.getInstance().getPlayer();
+        if (player != null
+                && PlayerHolder.getInstance().getType() == PlayerService.PlayerType.VIDEO
+                && PlayerHelper.getMinimizeOnExitAction(this)
+                == PlayerHelper.MinimizeMode.MINIMIZE_ON_EXIT_MODE_POPUP
+                && PlayerHelper.shouldUsePictureInPictureForPopup(this)) {
+            enterPictureInPicturePlayerMode(player);
+        }
+    }
+
+    public boolean enterPictureInPicturePlayerMode(@NonNull final Player player) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || isFinishing() || isDestroyed()) {
+            return false;
+        }
+        if (isInPictureInPictureMode() || isPictureInPictureStartingOrActive()) {
+            return true;
+        }
+        if (!player.videoPlayerSelected() || !player.isPlaying()) {
+            return false;
+        }
+
+        try {
+            setPictureInPictureStartingOrActive(true);
+            SystemPictureInPictureActivity.start(this);
+            overridePendingTransition(0, 0);
+            return true;
+        } catch (final IllegalStateException e) {
+            setPictureInPictureStartingOrActive(false);
+            Log.w(TAG, "Unable to start picture-in-picture activity", e);
+            return false;
+        }
     }
 
     @Override

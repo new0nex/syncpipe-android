@@ -224,6 +224,7 @@ public final class Player {
 
     @NonNull private final Context context;
     @NonNull private final SharedPreferences prefs;
+    private boolean usePopupResolutionForVideoPlayer;
 
 
     /*//////////////////////////////////////////////////////////////////////////
@@ -282,7 +283,7 @@ public final class Player {
         renderFactory.setEnableDecoderFallback(true);
 
         sourceResolver = new SourceResolver(context, dataSource,
-                new PlayerQualityResolver(context, this::videoPlayerSelected));
+                new PlayerQualityResolver(context, this::usesMainVideoResolution));
         playerErrorHandler = new PlayerErrorHandler(this);
         repeatShuffleController = new RepeatShuffleController(this);
         tracksController = new PlayerTracksController(this);
@@ -505,6 +506,26 @@ public final class Player {
         if (playQueue != null) {
             playQueueManager = new MediaSourceManager(context, playbackListenerAdapter, playQueue);
         }
+    }
+
+    private boolean usesMainVideoResolution() {
+        return videoPlayerSelected() && !usePopupResolutionForVideoPlayer;
+    }
+
+    public void setUsePopupResolutionForVideoPlayer(final boolean usePopupResolution) {
+        if (usePopupResolutionForVideoPlayer == usePopupResolution) {
+            return;
+        }
+
+        usePopupResolutionForVideoPlayer = usePopupResolution;
+        sourceResolver.clearSelectedStreamOverride();
+
+        if (playQueue == null || exoPlayerIsNull() || !videoPlayerSelected()) {
+            return;
+        }
+
+        setRecovery();
+        reloadPlayQueueManager();
     }
 
     /**
@@ -1319,8 +1340,20 @@ public final class Player {
         menuController.setResizeMode(resizeMode);
     }
 
+    public void fitVideoSurfaceToWindowHeight(final int height) {
+        if (height <= 0) {
+            return;
+        }
+        binding.surfaceView.setHeights(height, height);
+        menuController.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+    }
+
     void onVideoSizeChanged(@NonNull final VideoSize videoSize) {
         uiModeController.onVideoSizeChanged(videoSize);
+    }
+
+    public float getVideoNaturalAspectRatio() {
+        return menuController.getVideoNaturalAspectRatio();
     }
 
     //endregion
@@ -1376,7 +1409,21 @@ public final class Player {
                     useVideoSource(false);
                     break;
                 case MINIMIZE_ON_EXIT_MODE_POPUP:
+                    if (MainActivity.isPictureInPictureStartingOrActive()) {
+                        break;
+                    }
                     setRecovery();
+                    if (shouldUsePictureInPictureForPopup(context)) {
+                        final AppCompatActivity parentActivity = getParentActivity();
+                        if (parentActivity instanceof MainActivity
+                                && ((MainActivity) parentActivity)
+                                .enterPictureInPicturePlayerMode(this)) {
+                            break;
+                        }
+                        if (shouldKeepAutoPictureInPictureFromFallingBackToOverlay(context)) {
+                            break;
+                        }
+                    }
                     NavigationHelper.playOnPopupPlayer(context, playQueue, true);
                     break;
                 case MINIMIZE_ON_EXIT_MODE_NONE: default:

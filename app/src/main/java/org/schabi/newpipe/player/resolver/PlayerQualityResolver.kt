@@ -9,18 +9,19 @@ import java.util.function.BooleanSupplier
 /**
  * Quality selection policy for the video player.
  *
- * The default resolution comes from a different preference depending on the current player type:
- * the main/video player uses the normal default resolution, while the popup player uses the popup
- * default resolution. Instead of capturing the whole [org.schabi.newpipe.player.Player], the
- * current player type is queried through [isVideoPlayer] only when a resolution is needed.
+ * The default resolution comes from a different preference depending on the current player mode:
+ * normal video playback uses the normal default resolution, while popup playback and system
+ * picture-in-picture use the popup default resolution. Instead of capturing the whole
+ * [org.schabi.newpipe.player.Player], the current playback mode is queried through
+ * [usesMainVideoResolution] only when a resolution is needed.
  */
 class PlayerQualityResolver(
     private val context: Context,
-    private val isVideoPlayer: BooleanSupplier,
+    private val usesMainVideoResolution: BooleanSupplier,
 ) : QualityResolver {
 
     override fun getDefaultResolutionIndex(sortedVideos: List<VideoStream>): Int =
-        if (isVideoPlayer.asBoolean) {
+        if (usesMainVideoResolution.asBoolean) {
             ListHelper.getDefaultResolutionIndex(context, sortedVideos)
         } else {
             ListHelper.getPopupDefaultResolutionIndex(context, sortedVideos)

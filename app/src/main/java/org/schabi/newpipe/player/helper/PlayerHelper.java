@@ -13,6 +13,9 @@ import static org.schabi.newpipe.player.helper.PlayerHelper.MinimizeGestureMode.
 import static org.schabi.newpipe.player.helper.PlayerHelper.MinimizeMode.MINIMIZE_ON_EXIT_MODE_BACKGROUND;
 import static org.schabi.newpipe.player.helper.PlayerHelper.MinimizeMode.MINIMIZE_ON_EXIT_MODE_NONE;
 import static org.schabi.newpipe.player.helper.PlayerHelper.MinimizeMode.MINIMIZE_ON_EXIT_MODE_POPUP;
+import static org.schabi.newpipe.player.helper.PlayerHelper.PopupPlayerMode.POPUP_PLAYER_MODE_AUTO;
+import static org.schabi.newpipe.player.helper.PlayerHelper.PopupPlayerMode.POPUP_PLAYER_MODE_OVERLAY;
+import static org.schabi.newpipe.player.helper.PlayerHelper.PopupPlayerMode.POPUP_PLAYER_MODE_PICTURE_IN_PICTURE;
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 import android.annotation.SuppressLint;
@@ -112,6 +115,15 @@ public final class PlayerHelper {
         int MINIMIZE_ON_EXIT_MODE_NONE = 0;
         int MINIMIZE_ON_EXIT_MODE_BACKGROUND = 1;
         int MINIMIZE_ON_EXIT_MODE_POPUP = 2;
+    }
+
+    @Retention(SOURCE)
+    @IntDef({POPUP_PLAYER_MODE_AUTO, POPUP_PLAYER_MODE_PICTURE_IN_PICTURE,
+            POPUP_PLAYER_MODE_OVERLAY})
+    public @interface PopupPlayerMode {
+        int POPUP_PLAYER_MODE_AUTO = 0;
+        int POPUP_PLAYER_MODE_PICTURE_IN_PICTURE = 1;
+        int POPUP_PLAYER_MODE_OVERLAY = 2;
     }
 
     /** Where the swipe-down-to-minimize gesture is active. */
@@ -399,6 +411,31 @@ public final class PlayerHelper {
     public static boolean isAutoQueueEnabled(@NonNull final Context context) {
         return getPreferences(context)
                 .getBoolean(context.getString(R.string.auto_queue_key), false);
+    }
+
+    @PopupPlayerMode
+    public static int getPopupPlayerMode(@NonNull final Context context) {
+        final String mode = getPreferences(context)
+                .getString(context.getString(R.string.popup_player_mode_key), "");
+        if (mode.equals(context.getString(R.string.popup_player_mode_overlay_key))) {
+            return POPUP_PLAYER_MODE_OVERLAY;
+        } else if (mode.equals(context.getString(
+                R.string.popup_player_mode_picture_in_picture_key))) {
+            return POPUP_PLAYER_MODE_PICTURE_IN_PICTURE;
+        } else {
+            return POPUP_PLAYER_MODE_AUTO; // default
+        }
+    }
+
+    public static boolean shouldUsePictureInPictureForPopup(@NonNull final Context context) {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                && getPopupPlayerMode(context) != POPUP_PLAYER_MODE_OVERLAY;
+    }
+
+    public static boolean shouldKeepAutoPictureInPictureFromFallingBackToOverlay(
+            @NonNull final Context context) {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                && getPopupPlayerMode(context) == POPUP_PLAYER_MODE_AUTO;
     }
 
     @MinimizeMode

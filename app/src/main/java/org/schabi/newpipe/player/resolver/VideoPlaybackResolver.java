@@ -262,6 +262,11 @@ public class VideoPlaybackResolver implements PlaybackResolver {
         selectedCodec = selectedStream.getCodec();
     }
 
+    public void clearSelectedStreamOverride() {
+        selectedResolution = null;
+        selectedCodec = null;
+    }
+
     public void addBlacklistUrl(@NonNull final String url) {
         blacklistUrls.add(url);
     }

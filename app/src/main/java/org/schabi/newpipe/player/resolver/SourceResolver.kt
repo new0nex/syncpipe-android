@@ -71,6 +71,10 @@ class SourceResolver(
         videoResolver.setSelectedStream(stream)
     }
 
+    fun clearSelectedStreamOverride() {
+        videoResolver.clearSelectedStreamOverride()
+    }
+
     fun getAudioTrack(): String? = videoResolver.audioTrack
 
     fun setAudioTrack(audioTrackId: String?) {

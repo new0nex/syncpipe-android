@@ -14,6 +14,7 @@ import androidx.preference.Preference;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.schabi.newpipe.R;
+import org.schabi.newpipe.player.helper.PlayerHelper;
 import org.schabi.newpipe.util.PermissionHelper;
 
 public class VideoAudioSettingsFragment extends BasePreferenceFragment {
@@ -26,10 +27,13 @@ public class VideoAudioSettingsFragment extends BasePreferenceFragment {
 
         listener = (sharedPreferences, s) -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                    && s.equals(getString(R.string.minimize_on_exit_key))) {
-                final String newSetting = sharedPreferences.getString(s, null);
-                if (newSetting != null
-                        && newSetting.equals(getString(R.string.minimize_on_exit_popup_key))
+                    && (s.equals(getString(R.string.minimize_on_exit_key))
+                    || s.equals(getString(R.string.popup_player_mode_key)))) {
+                final String minimizeSetting = sharedPreferences.getString(
+                        getString(R.string.minimize_on_exit_key), null);
+                if (minimizeSetting != null
+                        && minimizeSetting.equals(getString(R.string.minimize_on_exit_popup_key))
+                        && !PlayerHelper.shouldUsePictureInPictureForPopup(requireContext())
                         && !Settings.canDrawOverlays(getContext())) {
 
                     Snackbar.make(getListView(), R.string.permission_display_over_apps,

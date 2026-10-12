@@ -516,6 +516,12 @@
 <string name="minimize_on_exit_none_description">None</string>
 <string name="minimize_on_exit_background_description">Minimize to background player</string>
 <string name="minimize_on_exit_popup_description">Minimize to popup player</string>
+<string name="popup_player_mode_title">Popup player mode</string>
+<string name="popup_player_mode_summary">How popup player behaves on supported Android versions — %s</string>
+<string name="popup_player_mode_auto_description">Auto (system PiP on Android 8+)</string>
+<string name="popup_player_mode_picture_in_picture_description">System picture-in-picture</string>
+<string name="popup_player_mode_overlay_description">Overlay window</string>
+<string name="picture_in_picture_unavailable">Picture-in-picture is not available right now</string>
 <!-- Autoplay behavior -->
 <string name="autoplay_summary">Start playback automatically — %s</string>
 <string name="wifi_only">Only on Wi-Fi</string>

@@ -102,6 +102,22 @@
         <item>@string/minimize_on_exit_popup_description</item>
     </string-array>
 
+    <string name="popup_player_mode_key">popup_player_mode_key</string>
+    <string name="popup_player_mode_value">@string/popup_player_mode_auto_key</string>
+    <string name="popup_player_mode_auto_key">popup_player_mode_auto_key</string>
+    <string name="popup_player_mode_picture_in_picture_key">popup_player_mode_picture_in_picture_key</string>
+    <string name="popup_player_mode_overlay_key">popup_player_mode_overlay_key</string>
+    <string-array name="popup_player_mode_values">
+        <item>@string/popup_player_mode_auto_key</item>
+        <item>@string/popup_player_mode_picture_in_picture_key</item>
+        <item>@string/popup_player_mode_overlay_key</item>
+    </string-array>
+    <string-array name="popup_player_mode_descriptions">
+        <item>@string/popup_player_mode_auto_description</item>
+        <item>@string/popup_player_mode_picture_in_picture_description</item>
+        <item>@string/popup_player_mode_overlay_description</item>
+    </string-array>
+
     <string name="start_main_player_fullscreen_key">start_main_player_fullscreen_key</string>
 
     <string name="autoplay_key">autoplay_key</string>
